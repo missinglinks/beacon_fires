@@ -13,8 +13,8 @@ func action():
 	if torch.is_active:
 		print("beacon fire lit")
 		emit_signal("beacon_lit")
+		GameState.level_succeeded()
 		$Area2D/CollisionShape2D.disabled = true
-		
 	else:
 		print("cannot light beacon fire")
 

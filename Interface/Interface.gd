@@ -11,6 +11,9 @@ var active_time = 2
 func _ready():
 	torchIndicator.visible = false
 	torchRect.set_size(size)
+	
+	$State/RetriesLabel.text = "Retries: " + String(GameState.retries)
+	$State/BeaconsLevel.text = "Beacons: " + String(GameState.beacons_lit) 
 
 func _on_Torch_time_changed(time_left):	
 	var x = time_left/active_time * 100

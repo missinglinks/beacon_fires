@@ -41,6 +41,10 @@ _global_script_class_icons={
 config/name="Beacon Fires"
 run/main_scene="res://StartMenu/StartMenu.tscn"
 
+[autoload]
+
+GameState="*res://GameState.tscn"
+
 [display]
 
 window/size/width=960

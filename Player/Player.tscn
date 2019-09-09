@@ -143,6 +143,7 @@ script = ExtResource( 4 )
 script = ExtResource( 5 )
 
 [node name="Stumbling" type="Node" parent="States"]
+editor/display_folded = true
 script = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="States/Stumbling"]

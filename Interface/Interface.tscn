@@ -32,15 +32,31 @@ margin_bottom = 21.3025
 
 [node name="State" type="ColorRect" parent="."]
 margin_left = 24.0
-margin_top = 55.8571
+margin_top = 50.0
 margin_right = 201.0
-margin_bottom = 84.8571
+margin_bottom = 150.0
 color = Color( 0.227451, 0.227451, 0.227451, 0.439216 )
 
 [node name="StateLabel" type="Label" parent="State"]
-margin_left = 15.0
-margin_top = 1.0
-margin_right = 53.0
-margin_bottom = 28.0
+margin_left = 15.3698
+margin_top = 10.0
+margin_right = 53.3698
+margin_bottom = 37.0
 text = "State"
+valign = 1
+
+[node name="RetriesLabel" type="Label" parent="State"]
+margin_left = 15.3698
+margin_top = 37.0
+margin_right = 53.3698
+margin_bottom = 64.0
+text = "Retries"
+valign = 1
+
+[node name="BeaconsLevel" type="Label" parent="State"]
+margin_left = 15.3698
+margin_top = 64.0
+margin_right = 53.3698
+margin_bottom = 91.0
+text = "Beacons lit"
 valign = 1

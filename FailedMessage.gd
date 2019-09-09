@@ -1,16 +1,10 @@
 extends Control
 
 
-func _on_Exit_pressed():
-	get_tree().quit()
-
-
-func _on_Retry_pressed():
-	Engine.set_time_scale(1)
-	get_tree().reload_current_scene()
-
-
-func _on_GameState_level_failed():
-	visible=true
-	$ColorRect/VSplitContainer/HSplitContainer/Retry.grab_focus()
-	print("game over")
+func _process(delta):
+	if not visible and GameState._retry_state and GameState.retries > 0 :
+		visible = true
+		
+	if GameState._retry_state and visible:
+		var x  = 300 * GameState.retry_timer.time_left
+		$ColorRect/VSplitContainer/RetryTimerRect.set_size(Vector2(x, 15))

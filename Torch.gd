@@ -32,7 +32,9 @@ func action():
 
 func _on_Timer_timeout():
 	is_active = false
-	emit_signal("torch_run_out")
+	
+	GameState.level_failed()
+	
 	print("torch time out")
 
 func _on_BeaconFire_beacon_lit():

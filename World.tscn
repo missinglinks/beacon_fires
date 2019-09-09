@@ -22,7 +22,7 @@
 [ext_resource path="res://sprites/ground/bg1.png" type="Texture" id=20]
 [ext_resource path="res://sprites/ground/ground_left_top.png" type="Texture" id=21]
 [ext_resource path="res://ObstracleSpawner.gd" type="Script" id=22]
-[ext_resource path="res://GameState.gd" type="Script" id=23]
+[ext_resource path="res://GameState.tscn" type="PackedScene" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.7703, 13.3421 )
@@ -40,8 +40,11 @@ extents = Vector2( 1.11356, 167.779 )
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
 position = Vector2( 39.6862, 273.736 )
 z_index = 5
+MAX_SPEED = 350.0
+ACCELERATION = 1300.0
 
 [node name="Interactor" type="Node" parent="Player"]
 script = ExtResource( 3 )
@@ -110,7 +113,6 @@ text = "text"
 [node name="Interface" parent="InterfaceLayer" instance=ExtResource( 9 )]
 
 [node name="FailedMessage" type="Control" parent="InterfaceLayer"]
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -135,27 +137,14 @@ margin_right = 151.929
 margin_bottom = 96.0
 
 [node name="Label" type="Label" parent="InterfaceLayer/FailedMessage/ColorRect/VSplitContainer"]
-margin_right = 102.0
+margin_right = 175.0
 margin_bottom = 14.0
-text = "Failed"
+text = "Press action button to retry"
 
-[node name="HSplitContainer" type="HSplitContainer" parent="InterfaceLayer/FailedMessage/ColorRect/VSplitContainer"]
+[node name="RetryTimerRect" type="ColorRect" parent="InterfaceLayer/FailedMessage/ColorRect/VSplitContainer"]
 margin_top = 26.0
-margin_right = 102.0
+margin_right = 175.0
 margin_bottom = 46.0
-
-[node name="Retry" type="Button" parent="InterfaceLayer/FailedMessage/ColorRect/VSplitContainer/HSplitContainer"]
-margin_right = 45.0
-margin_bottom = 20.0
-focus_neighbour_right = NodePath("../Exit")
-text = "Retry"
-
-[node name="Exit" type="Button" parent="InterfaceLayer/FailedMessage/ColorRect/VSplitContainer/HSplitContainer"]
-margin_left = 57.0
-margin_right = 102.0
-margin_bottom = 20.0
-focus_neighbour_left = NodePath("../Retry")
-text = "Exit"
 
 [node name="SuccessMessage" type="Control" parent="InterfaceLayer"]
 editor/display_folded = true
@@ -183,24 +172,24 @@ margin_right = 151.929
 margin_bottom = 96.0
 
 [node name="Label" type="Label" parent="InterfaceLayer/SuccessMessage/ColorRect/VSplitContainer"]
-margin_right = 102.0
+margin_right = 139.0
 margin_bottom = 14.0
 text = "Yay! You did it"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="InterfaceLayer/SuccessMessage/ColorRect/VSplitContainer"]
 margin_top = 26.0
-margin_right = 102.0
+margin_right = 139.0
 margin_bottom = 46.0
 
 [node name="Next" type="Button" parent="InterfaceLayer/SuccessMessage/ColorRect/VSplitContainer/HSplitContainer"]
-margin_right = 45.0
+margin_right = 92.0
 margin_bottom = 20.0
 focus_neighbour_right = NodePath("../Exit")
 text = "Next beacon"
 
 [node name="Exit" type="Button" parent="InterfaceLayer/SuccessMessage/ColorRect/VSplitContainer/HSplitContainer"]
-margin_left = 57.0
-margin_right = 102.0
+margin_left = 104.0
+margin_right = 139.0
 margin_bottom = 20.0
 focus_neighbour_left = NodePath("../Next")
 text = "Exit"
@@ -359,27 +348,20 @@ position = Vector2( -421.137, -2599.52 )
 polygon = PoolVector2Array( -12.2952, 13.1941, 60.8323, 377.85, 142.742, 502.705, 293.078, 553.333, 254.332, 475.324, 278.096, 461.375, 303.927, 445.876, 315.687, 416.108, 329.208, 375.078, 338.067, 349.434, 356.717, 316.796, 381.937, 304.839, 440.315, 304.839, 459.292, 301.41, 500.322, 322.858, 560.468, 361.556, 605.695, 401.188, 661.178, 433.825, 715.263, 448.279, 722.257, 458.536, 673.301, 476.72, 640.247, 521.82, 632.498, 570.899, 839.129, 465.294, 934.361, 408.155, 814.214, 225.738, 517.136, 152.941, 123.697, 68.7827 )
 
 [node name="Obstracles" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="ObstracleSpawner" type="Node" parent="Obstracles"]
 script = ExtResource( 22 )
 
-[node name="GameState" type="Node" parent="."]
-script = ExtResource( 23 )
+[node name="GameState" parent="." instance=ExtResource( 23 )]
 [connection signal="state_changed" from="Player" to="Player/PlayerCamera" method="_on_Player_state_changed"]
 [connection signal="state_changed" from="Player" to="InterfaceLayer/Interface" method="_on_Player_state_changed"]
 [connection signal="time_changed" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_time_changed"]
+[connection signal="torch_picked_up" from="Torch" to="BeaconFire" method="_on_Torch_torch_picked_up"]
 [connection signal="torch_picked_up" from="Torch" to="Torch" method="_on_Torch_torch_picked_up"]
 [connection signal="torch_picked_up" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_torch_picked_up"]
-[connection signal="torch_picked_up" from="Torch" to="BeaconFire" method="_on_Torch_torch_picked_up"]
-[connection signal="torch_run_out" from="Torch" to="GameState" method="_on_Torch_torch_run_out"]
 [connection signal="torch_run_out" from="Torch" to="BeaconFire" method="_on_Torch_torch_run_out"]
 [connection signal="timeout" from="Torch/Timer" to="Torch" method="_on_Timer_timeout"]
-[connection signal="pressed" from="InterfaceLayer/FailedMessage/ColorRect/VSplitContainer/HSplitContainer/Retry" to="InterfaceLayer/FailedMessage" method="_on_Retry_pressed"]
-[connection signal="pressed" from="InterfaceLayer/FailedMessage/ColorRect/VSplitContainer/HSplitContainer/Exit" to="InterfaceLayer/FailedMessage" method="_on_Exit_pressed"]
 [connection signal="pressed" from="InterfaceLayer/SuccessMessage/ColorRect/VSplitContainer/HSplitContainer/Next" to="InterfaceLayer/SuccessMessage" method="_on_Next_pressed"]
 [connection signal="pressed" from="InterfaceLayer/SuccessMessage/ColorRect/VSplitContainer/HSplitContainer/Exit" to="InterfaceLayer/SuccessMessage" method="_on_Exit_pressed"]
 [connection signal="beacon_lit" from="BeaconFire" to="Torch" method="_on_BeaconFire_beacon_lit"]
-[connection signal="beacon_lit" from="BeaconFire" to="GameState" method="_on_BeaconFire_beacon_lit"]
-[connection signal="level_failed" from="GameState" to="InterfaceLayer/FailedMessage" method="_on_GameState_level_failed"]
 [connection signal="level_succeeded" from="GameState" to="InterfaceLayer/SuccessMessage" method="_on_GameState_level_succeeded"]

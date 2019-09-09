@@ -14,7 +14,9 @@ func enter(host):
 			host.anim.play("idle_right")
 	
 func update(delta, host):
-	var input = host.get_input_axis()
+	var input = Vector2.ZERO
+	if GameState.input_on:
+		input = host.get_input_axis()
 	
 	if input != Vector2.ZERO:
 		return state_machine.states.Running

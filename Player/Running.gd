@@ -26,7 +26,9 @@ func enter(host):
 
 	
 func update(delta, host):
-	var input = host.get_input_axis()
+	var input = Vector2.ZERO
+	if GameState.input_on:
+		input = host.get_input_axis()
 	
 	host.move_player(input, delta)
 	
