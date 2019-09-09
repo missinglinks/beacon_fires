@@ -1,5 +1,13 @@
 extends Node
 
+"""
+The interaction system consists of 4 parts:
+	* InteractionSystem: connects all interactible items with the interactor
+	* Interactor: the node that can interact with items
+	* Interactible: nodes that can be interacted with
+	* InteractionPrompt: on-screen prompt indicating the current interaction
+"""
+
 func _ready():
 	#var player = get_node("../Player")
 	var interactor = get_node("../Player/Interactor")

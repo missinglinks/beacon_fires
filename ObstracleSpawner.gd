@@ -2,7 +2,6 @@ extends Node
 
 onready var obstacle1 = preload("res://Obstacles/Obstacle1.tscn")
 onready var player = get_node("../../Player")
-onready var obstacle11 = get_node("../../Obstacle1")
 
 export var numObstacles: int = 20
 

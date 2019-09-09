@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Interactible",
 "language": "GDScript",
-"path": "res://Scripts/Interactible.gd"
+"path": "res://InteractionSystem/Interactible.gd"
 }, {
 "base": "Node2D",
 "class": "Item",

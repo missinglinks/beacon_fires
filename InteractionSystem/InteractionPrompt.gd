@@ -1,5 +1,10 @@
 extends ColorRect
 
+"""
+Interaction Prompt
+Shows a 
+"""
+
 func _ready():
 	visible = false
 
@@ -9,5 +14,4 @@ func _on_Interactable_entered(body, interactible: Interactible):
 	visible = true
 	
 func _on_Interactable_exited(body, interactible: Interactible):
-	print("hide prompt")
 	visible = false

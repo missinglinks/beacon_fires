@@ -13,7 +13,10 @@ func _ready():
 func _process(delta):
 	pass
 
-
+"""
+Add camera zoom in/out when player state changes:
+Zoom out when running, return to original zoom when idle.
+"""
 func _on_Player_state_changed(new_state):
 	match new_state.name:
 		"Running":

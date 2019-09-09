@@ -1,5 +1,13 @@
 extends Node
 
+"""
+Interactor 
+
+Child of the player node.
+Handles interaction input and triggers action if player is in range
+of an interactible object.
+"""
+
 # interaction variables
 var can_interact: bool = false
 var interaction_target: Interactible = null
