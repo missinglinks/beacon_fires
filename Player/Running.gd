@@ -36,6 +36,7 @@ func update(delta, host):
 		
 	
 	if host.motion == Vector2.ZERO and input == Vector2.ZERO:
+		print("state -> idle")
 		return state_machine.states.Idle
 	
 	

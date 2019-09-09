@@ -24,6 +24,7 @@ func action():
 	timer.wait_time = active_time
 	timer.start()
 	emit_signal("torch_picked_up", active_time)
+	
 	#disable collision shape and hide object
 	$Area2D/CollisionShape2D.disabled=true
 	visible = false

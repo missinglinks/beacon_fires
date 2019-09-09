@@ -2,6 +2,7 @@ extends State
 
 
 func enter(host):
+	host.motion = Vector2.ZERO
 	match host.direction:
 		"up":
 			host.anim.play("idle")
