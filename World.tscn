@@ -106,7 +106,6 @@ margin_bottom = 7.0
 text = "text"
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="Interface" parent="InterfaceLayer" instance=ExtResource( 9 )]
 
@@ -370,17 +369,17 @@ script = ExtResource( 23 )
 [connection signal="state_changed" from="Player" to="Player/PlayerCamera" method="_on_Player_state_changed"]
 [connection signal="state_changed" from="Player" to="InterfaceLayer/Interface" method="_on_Player_state_changed"]
 [connection signal="time_changed" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_time_changed"]
-[connection signal="torch_picked_up" from="Torch" to="BeaconFire" method="_on_Torch_torch_picked_up"]
 [connection signal="torch_picked_up" from="Torch" to="Torch" method="_on_Torch_torch_picked_up"]
 [connection signal="torch_picked_up" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_torch_picked_up"]
-[connection signal="torch_run_out" from="Torch" to="BeaconFire" method="_on_Torch_torch_run_out"]
+[connection signal="torch_picked_up" from="Torch" to="BeaconFire" method="_on_Torch_torch_picked_up"]
 [connection signal="torch_run_out" from="Torch" to="GameState" method="_on_Torch_torch_run_out"]
+[connection signal="torch_run_out" from="Torch" to="BeaconFire" method="_on_Torch_torch_run_out"]
 [connection signal="timeout" from="Torch/Timer" to="Torch" method="_on_Timer_timeout"]
 [connection signal="pressed" from="InterfaceLayer/FailedMessage/ColorRect/VSplitContainer/HSplitContainer/Retry" to="InterfaceLayer/FailedMessage" method="_on_Retry_pressed"]
 [connection signal="pressed" from="InterfaceLayer/FailedMessage/ColorRect/VSplitContainer/HSplitContainer/Exit" to="InterfaceLayer/FailedMessage" method="_on_Exit_pressed"]
 [connection signal="pressed" from="InterfaceLayer/SuccessMessage/ColorRect/VSplitContainer/HSplitContainer/Next" to="InterfaceLayer/SuccessMessage" method="_on_Next_pressed"]
 [connection signal="pressed" from="InterfaceLayer/SuccessMessage/ColorRect/VSplitContainer/HSplitContainer/Exit" to="InterfaceLayer/SuccessMessage" method="_on_Exit_pressed"]
-[connection signal="beacon_lit" from="BeaconFire" to="GameState" method="_on_BeaconFire_beacon_lit"]
 [connection signal="beacon_lit" from="BeaconFire" to="Torch" method="_on_BeaconFire_beacon_lit"]
+[connection signal="beacon_lit" from="BeaconFire" to="GameState" method="_on_BeaconFire_beacon_lit"]
 [connection signal="level_failed" from="GameState" to="InterfaceLayer/FailedMessage" method="_on_GameState_level_failed"]
 [connection signal="level_succeeded" from="GameState" to="InterfaceLayer/SuccessMessage" method="_on_GameState_level_succeeded"]
