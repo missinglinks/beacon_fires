@@ -35,7 +35,7 @@ func update(delta, host):
 		set_animation(host)
 		
 	
-	if host.motion == Vector2.ZERO:
+	if host.motion == Vector2.ZERO and input == Vector2.ZERO:
 		return state_machine.states.Idle
 	
 	

@@ -46,6 +46,7 @@ func move_player(axis, delta):
 		apply_friction(ACCELERATION * delta)
 	else:
 		apply_movement(axis * ACCELERATION * delta)
+	
 	motion = move_and_slide(motion)
 
 	

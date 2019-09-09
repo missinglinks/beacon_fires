@@ -5,7 +5,6 @@ onready var timer = $Timer
 export var active_time: float = 2.0
 
 var is_active: bool = false
-#var interaction_prompt = "pick up"
 
 signal torch_picked_up(active_time)
 signal time_changed(time_left)

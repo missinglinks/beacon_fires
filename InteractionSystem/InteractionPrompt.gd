@@ -2,7 +2,8 @@ extends ColorRect
 
 """
 Interaction Prompt
-Shows a 
+Shows a promt with the prompt label of the interactible object when
+the interactor is near the object.
 """
 
 func _ready():

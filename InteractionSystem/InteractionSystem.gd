@@ -9,7 +9,6 @@ The interaction system consists of 4 parts:
 """
 
 func _ready():
-	#var player = get_node("../Player")
 	var interactor = get_node("../Player/Interactor")
 	var interactionPrompt = $InteractionPromptNode/InteractionPrompt
 	

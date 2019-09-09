@@ -1,13 +1,16 @@
 extends Node
 
-onready var player = get_node("../Player")
+"""
+Handles general game progression
+"""
 
-var player_input_on: bool = true
+onready var player = get_node("../Player")
 
 var level: int = 1
 
 signal level_succeeded()
 signal level_failed()
+
 
 func _on_BeaconFire_beacon_lit():
 	Engine.set_time_scale(0.2)
