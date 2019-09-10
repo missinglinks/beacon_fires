@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/Block.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 250, 250 )
+
+[node name="LevelBlock" type="Node2D"]
+z_index = -10
+script = ExtResource( 1 )
+
+[node name="Ground" type="Area2D" parent="."]
+gravity_vec = Vector2( 0, 0 )
+
+[node name="GroundTextureRect" type="TextureRect" parent="Ground"]
+margin_right = 500.0
+margin_bottom = 500.0
+expand = true
+stretch_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2( 250, 250 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Borders" type="StaticBody2D" parent="."]
+
+[node name="RightCollision" type="CollisionShape2D" parent="Borders"]
+position = Vector2( 750, 250 )
+shape = SubResource( 1 )
+
+[node name="LeftCollision" type="CollisionShape2D" parent="Borders"]
+position = Vector2( -250, 250 )
+shape = SubResource( 1 )
