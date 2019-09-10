@@ -70,3 +70,4 @@ func level_failed():
 func _on_RetryTimer_timeout():
 	if _retry_state:
 		game_over()
+		

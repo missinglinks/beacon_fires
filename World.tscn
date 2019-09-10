@@ -13,9 +13,9 @@
 [ext_resource path="res://SuccessMessage.gd" type="Script" id=11]
 [ext_resource path="res://BeaconFire.gd" type="Script" id=12]
 [ext_resource path="res://sprites/beacon_fire.png" type="Texture" id=13]
-[ext_resource path="res://ObstracleSpawner.gd" type="Script" id=14]
-[ext_resource path="res://GameState.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=16]
+[ext_resource path="res://GameState.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Obstacles/Explosion/ExplosionSpawner.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.7703, 13.3421 )
@@ -33,8 +33,8 @@ script = ExtResource( 1 )
 editor/display_folded = true
 position = Vector2( 0, 273.736 )
 z_index = 5
-MAX_SPEED = 350.0
-ACCELERATION = 1300.0
+MAX_SPEED = 320.0
+ACCELERATION = 1500.0
 
 [node name="Interactor" type="Node" parent="Player"]
 script = ExtResource( 3 )
@@ -210,19 +210,16 @@ editor/display_folded = true
 position = Vector2( -1.08072, 46.4709 )
 shape = SubResource( 3 )
 
-[node name="Obstracles" type="Node" parent="."]
-editor/display_folded = true
+[node name="GameState" parent="." instance=ExtResource( 14 )]
 
-[node name="ObstracleSpawner" type="Node" parent="Obstracles"]
-script = ExtResource( 14 )
-
-[node name="GameState" parent="." instance=ExtResource( 15 )]
-
-[node name="Level" parent="." instance=ExtResource( 16 )]
+[node name="Level" parent="." instance=ExtResource( 15 )]
 z_index = -10
 size = 6
-[connection signal="state_changed" from="Player" to="InterfaceLayer/Interface" method="_on_Player_state_changed"]
+
+[node name="ExplosionSpawner" parent="." instance=ExtResource( 16 )]
+cooldown = 0.6
 [connection signal="state_changed" from="Player" to="Player/PlayerCamera" method="_on_Player_state_changed"]
+[connection signal="state_changed" from="Player" to="InterfaceLayer/Interface" method="_on_Player_state_changed"]
 [connection signal="time_changed" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_time_changed"]
 [connection signal="torch_picked_up" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_torch_picked_up"]
 [connection signal="torch_picked_up" from="Torch" to="BeaconFire" method="_on_Torch_torch_picked_up"]

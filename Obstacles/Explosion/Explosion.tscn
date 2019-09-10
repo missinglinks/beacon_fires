@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Explosion.gd" type="Script" id=1]
+[ext_resource path="res://Obstacles/Explosion/explosion_indicator.png" type="Texture" id=2]
+[ext_resource path="res://Obstacles/Explosion/explosion-sheet.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.2145
+
+[sub_resource type="Animation" id=2]
+resource_name = "explosion"
+length = 1.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9 ]
+}
+
+[node name="Explosion" type="Node2D"]
+position = Vector2( 0.0632172, 221.121 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource( 1 )
+
+[node name="Indicator" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="IndicatorTimer" type="Timer" parent="Indicator"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Explosion" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+hframes = 11
+frame = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/explosion = SubResource( 2 )
+[connection signal="timeout" from="Indicator/IndicatorTimer" to="." method="_on_IndicatorTimer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
