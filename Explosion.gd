@@ -22,11 +22,12 @@ func _process(delta):
 
 
 func _explode():
-	$DamageArea/CollisionShape2D.disabled = false
+	#$DamageArea/CollisionShape2D.disabled = false
+	$Explosion/ActivateExplosionDamage.start()
 	$Explosion.visible = true
 	$AnimationPlayer.play("explosion")
 	
-	$DamageArea.connect("body_entered", self, "_on_Body_entered", [])
+
 
 func _on_IndicatorTimer_timeout():
 	_indication_phase = false
@@ -43,3 +44,7 @@ func _on_Body_entered(body):
 		print("body entered explosion")
 		GameState.level_failed()
 	
+
+func _on_ActivateExplosionDamage_timeout():
+	$DamageArea/CollisionShape2D.disabled =false
+	$DamageArea.connect("body_entered", self, "_on_Body_entered", [])
