@@ -14,15 +14,7 @@ func set_animation(host):
 			host.anim.play("run_right")
 
 func enter(host):
-	match host.direction:
-		"up":
-			host.anim.play("run_up")
-		"down":
-			host.anim.play("run_up")
-		"left":
-			host.anim.play("run_left")
-		"right":
-			host.anim.play("run_right")
+	set_animation(host)
 
 	
 func update(delta, host):

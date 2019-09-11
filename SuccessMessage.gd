@@ -14,6 +14,5 @@ func _on_Next_pressed():
 
 
 func _activate():
-	print("success 2")
 	visible = true
 	$ColorRect/VSplitContainer/HSplitContainer/Next.grab_focus()

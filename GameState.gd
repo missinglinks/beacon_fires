@@ -55,7 +55,6 @@ func level_succeeded():
 	yield(get_tree().create_timer(0.1), "timeout")
 	Engine.set_time_scale(0)
 	input_on = false
-	print("success")
 	beacons_lit += 1
 	level_succeeded = true
 
