@@ -1,9 +1,11 @@
 extends Node2D
 
 onready var indication_sprite = $Indicator
-onready var indication_timer = $Indicator/IndicatorTimer
+onready var indication_timer: Timer = $Indicator/IndicatorTimer
 
-var _indication_phase = true
+var indication_time = 0.5 setget set_indication_time
+
+var _indication_phase: bool = true
 var _scale_reduction
 
 func _ready():
@@ -20,6 +22,13 @@ func _process(delta):
 		var new_scale = indication_timer.time_left * _scale_reduction
 		indication_sprite.scale = Vector2(new_scale, new_scale)
 
+
+func set_indication_time(t):
+	indication_timer.stop()
+	indication_timer.set_wait_time(t)
+	indication_timer.start()
+	indication_time = t
+	_scale_reduction = 1 / indication_time
 
 func _explode():
 	#$DamageArea/CollisionShape2D.disabled = false

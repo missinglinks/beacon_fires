@@ -10,6 +10,6 @@ wait_time = 0.5
 autostart = true
 
 [node name="LineTimer" type="Timer" parent="."]
-wait_time = 2.5
+wait_time = 2.9
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
 [connection signal="timeout" from="LineTimer" to="." method="_on_LineTimer_timeout"]
