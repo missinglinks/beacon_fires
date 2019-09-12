@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Enemies/DashEnemy/DashEnemy.gd" type="Script" id=1]
+[ext_resource path="res://sprites/enemies/particles.png" type="Texture" id=2]
+[ext_resource path="res://sprites/enemies/enemy1.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/DashEnemy/States.gd" type="Script" id=4]
+[ext_resource path="res://Enemies/DashEnemy/Wandering.gd" type="Script" id=5]
+[ext_resource path="res://Enemies/DashEnemy/Attack.gd" type="Script" id=6]
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 16.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.2
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 9.08388
+
+[sub_resource type="Animation" id=2]
+resource_name = "BaseAnimation"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4 ]
+}
+
+[node name="DashEnemy" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="WindupParticles" type="Particles2D" parent="."]
+emitting = false
+lifetime = 0.3
+speed_scale = 2.0
+explosiveness = 0.1
+randomness = 0.07
+process_material = SubResource( 3 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+hframes = 5
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.272278, -1.49754 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/BaseAnimation = SubResource( 2 )
+
+[node name="States" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="Wandering" type="Node" parent="States"]
+script = ExtResource( 5 )
+
+[node name="Attack" type="Node" parent="States"]
+script = ExtResource( 6 )
+
+[node name="WindupTimer" type="Timer" parent="States/Attack"]
+one_shot = true
+
+[node name="WindupFollowTimer" type="Timer" parent="States/Attack"]
+wait_time = 0.5
+one_shot = true
+
+[node name="StateLabel" type="Label" parent="."]
+margin_left = -18.3859
+margin_top = -31.0889
+margin_right = 21.6141
+margin_bottom = -17.0889
+text = "State"
+[connection signal="timeout" from="States/Attack/WindupTimer" to="States/Attack" method="_on_WindupTimer_timeout"]
+[connection signal="timeout" from="States/Attack/WindupFollowTimer" to="States/Attack" method="_on_WindupFollowTimer_timeout"]
