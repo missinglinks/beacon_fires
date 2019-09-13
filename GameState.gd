@@ -6,9 +6,11 @@ Handles general game progression
 
 onready var retry_timer: Timer = $RetryTimer
 
+var points: int = 0
 
 var beacons_lit: int = 0
 var retries: int = 3
+
 var _retry_state: bool = false
 var level_succeeded: bool = false
 var input_on = true
@@ -68,13 +70,13 @@ func level_succeeded():
 
 
 func level_failed():
-	_retry_state = true
-	input_on = false
-	Engine.set_time_scale(0.2)	
-	retry_timer.start()
+	if !_retry_state:
+		_retry_state = true
+		input_on = false
+		Engine.set_time_scale(0.2)	
+		retry_timer.start()
 
 
 func _on_RetryTimer_timeout():
 	if _retry_state:
 		game_over()
-		

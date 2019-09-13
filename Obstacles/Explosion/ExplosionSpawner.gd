@@ -11,6 +11,8 @@ var explosion = preload("res://Obstacles/Explosion/Explosion.tscn")
 
 export var spawn_lines: bool = true
 export var spawn_path: bool = false
+export var spawn_snake: bool = false
+
 
 func _ready():
 	cooldown_timer.wait_time = cooldown
@@ -42,6 +44,12 @@ func _on_CooldownTimer_timeout():
 		ex.position = Vector2(x, y)
 		add_child(ex)
 		ex.indication_time = 1
+		
+	if player and spawn_snake:
+		var ex = explosion.instance()
+		ex.position = player.position
+		add_child(ex)
+		ex.indication_time = 0.5		
 
 
 func _on_LineTimer_timeout():
