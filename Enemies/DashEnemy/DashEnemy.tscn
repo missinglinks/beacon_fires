@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Enemies/DashEnemy/DashEnemy.gd" type="Script" id=1]
 [ext_resource path="res://sprites/enemies/particles.png" type="Texture" id=2]
@@ -6,21 +6,19 @@
 [ext_resource path="res://Enemies/DashEnemy/States.gd" type="Script" id=4]
 [ext_resource path="res://Enemies/DashEnemy/Wandering.gd" type="Script" id=5]
 [ext_resource path="res://Enemies/DashEnemy/Attack.gd" type="Script" id=6]
+[ext_resource path="res://sprites/enemies/indicatorArrow.png" type="Texture" id=7]
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 1
 emission_sphere_radius = 16.0
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
+angular_velocity = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.2
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 9.08388
-
-[sub_resource type="Animation" id=2]
-resource_name = "BaseAnimation"
+[sub_resource type="Animation" id=3]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -36,6 +34,9 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4 ]
 }
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 9.08388
+
 [node name="DashEnemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -45,20 +46,17 @@ lifetime = 0.3
 speed_scale = 2.0
 explosiveness = 0.1
 randomness = 0.07
-process_material = SubResource( 3 )
+process_material = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.01297, 0.0496578 )
 texture = ExtResource( 3 )
 hframes = 5
 frame = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.272278, -1.49754 )
-shape = SubResource( 1 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/BaseAnimation = SubResource( 2 )
+anims/BaseAnimation = SubResource( 3 )
 
 [node name="States" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -67,6 +65,7 @@ script = ExtResource( 4 )
 script = ExtResource( 5 )
 
 [node name="Attack" type="Node" parent="States"]
+editor/display_folded = true
 script = ExtResource( 6 )
 
 [node name="WindupTimer" type="Timer" parent="States/Attack"]
@@ -82,5 +81,23 @@ margin_top = -31.0889
 margin_right = 21.6141
 margin_bottom = -17.0889
 text = "State"
+
+[node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="."]
+
+[node name="IndicationSprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( -0.0693407, -0.0337048 )
+rotation = 1.5708
+texture = ExtResource( 7 )
+offset = Vector2( 0, 0.034 )
+
+[node name="Tween" type="Tween" parent="IndicationSprite"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -0.272278, -1.49754 )
+shape = SubResource( 2 )
 [connection signal="timeout" from="States/Attack/WindupTimer" to="States/Attack" method="_on_WindupTimer_timeout"]
 [connection signal="timeout" from="States/Attack/WindupFollowTimer" to="States/Attack" method="_on_WindupFollowTimer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

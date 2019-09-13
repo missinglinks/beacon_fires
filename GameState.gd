@@ -12,9 +12,17 @@ var retries: int = 3
 var _retry_state: bool = false
 var level_succeeded: bool = false
 var input_on = true
+
+export var level_blocks: int = 3
+var level_height
+var level_width
+
 signal level_succeeded()
 signal level_failed()
 
+func _ready():
+	level_height = level_blocks * 500
+	level_width = 500
 
 func _process(delta):
 	if Input.is_action_pressed("interact") and _retry_state and retries > 0:

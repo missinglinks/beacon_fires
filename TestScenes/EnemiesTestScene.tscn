@@ -15,17 +15,17 @@ ACCELERATION = 2000.0
 current = true
 
 [node name="DashEnemy" parent="." instance=ExtResource( 2 )]
-attack_windup = 1.0
-notice_radius = 300.0
+z_index = -4
+dash_speed = 1200.0
 
 [node name="Node2D" type="Node2D" parent="."]
 z_index = -50
 
 [node name="TextureRect" type="TextureRect" parent="Node2D"]
-margin_left = -505.0
-margin_top = -500.0
-margin_right = 495.0
-margin_bottom = 500.0
+margin_left = -477.0
+margin_top = -508.0
+margin_right = 523.0
+margin_bottom = 492.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 2
