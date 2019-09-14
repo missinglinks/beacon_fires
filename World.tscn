@@ -215,7 +215,7 @@ shape = SubResource( 3 )
 
 [node name="GameState" parent="." instance=ExtResource( 14 )]
 
-[node name="Level" parent="." instance=ExtResource( 15 )]
+[node name="LevelGraphics" parent="." instance=ExtResource( 15 )]
 z_index = -10
 size = 6
 

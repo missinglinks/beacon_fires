@@ -29,6 +29,10 @@ disabled = true
 position = Vector2( 750, 250 )
 shape = SubResource( 1 )
 
+[node name="Sprite" type="Sprite" parent="Borders/RightCollision"]
+
 [node name="LeftCollision" type="CollisionShape2D" parent="Borders"]
 position = Vector2( -250, 250 )
 shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Borders/LeftCollision"]
