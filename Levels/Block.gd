@@ -1,8 +1,8 @@
 extends Node2D
 
-var ground_tex = preload("res://Levels/Grass/grass_ground.png")
-var border_left = preload("res://Levels/Grass/grass_left.png")
-var border_right = preload("res://Levels/Grass/grass_right.png")
+var ground_tex = preload("res://Levels/Grass/Sprites/grass_ground.png")
+var border_left = preload("res://Levels/Grass/Sprites/grass_left.png")
+var border_right = preload("res://Levels/Grass/Sprites/grass_right.png")
 
 
 func _draw():

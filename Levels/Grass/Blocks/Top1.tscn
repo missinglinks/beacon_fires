@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/Grass/Blocks/Top1.gd" type="Script" id=1]
+[ext_resource path="res://Levels/Grass/Sprites/grass_top.png" type="Texture" id=2]
+
+[node name="Top1" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundaries"]
+position = Vector2( -0.981567, 0 )
+polygon = PoolVector2Array( -22.4625, 6.82016, -40.3749, 19.7698, -61.0266, 45.3842, -68.2573, 66.4739, -97.7829, 88.7687, -118.873, 103.833, -133.334, 120.102, -167.078, 126.73, -191.18, 155.051, -221.308, 176.743, -262.283, 202.051, -289.398, 223.14, -285.978, 250.617, -461.128, 262.307, -480.41, 106.846, -107.424, -58.2566, 129.986, -73.9233, 446.331, 176.14, 421.626, 293.64, 288.739, 256.506, 286.652, 243.627, 320.396, 244.23, 320.396, 229.768, 333.05, 227.961, 330.639, 218.922, 342.691, 207.474, 367.998, 196.628, 319.793, 177.345, 290.268, 154.448, 210.729, 119.499, 198.076, 98.4098, 94.4347, 39.3586, 85.3962, 29.115, 83.5886, 21.8842, 29.9604, -5.83365, -10.4113, -1.61571 )
+
+[node name="BeaconFirePosition" type="Position2D" parent="."]
+position = Vector2( 15.5904, 3.19802 )

@@ -14,9 +14,9 @@ func _ready():
 	
 	var interactibles = get_tree().get_nodes_in_group("Interactible")
 	for node in interactibles:
-		var interactionArea: Area2D = node.get_node("Area2D")
+		print(node.name)
 		var args = [ node ]
-		interactionArea.connect("body_entered", interactor, "_on_Interactable_entered", args)
-		interactionArea.connect("body_entered", interactionPrompt, "_on_Interactable_entered", args)
-		interactionArea.connect("body_exited", interactor, "_on_Interactable_exited", args)
-		interactionArea.connect("body_exited", interactionPrompt, "_on_Interactable_exited", args)
+		node.connect("body_entered", interactor, "_on_Interactable_entered", args)
+		node.connect("body_entered", interactionPrompt, "_on_Interactable_entered", args)
+		node.connect("body_exited", interactor, "_on_Interactable_exited", args)
+		node.connect("body_exited", interactionPrompt, "_on_Interactable_exited", args)

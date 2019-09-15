@@ -18,6 +18,7 @@ func _input(event):
 
 
 func _on_Interactable_entered(body, interaction_node: Interactible):
+	print("entered "+body.name)
 	can_interact = true
 	interaction_target = interaction_node
 	

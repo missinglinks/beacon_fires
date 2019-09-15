@@ -26,7 +26,7 @@ func action():
 	emit_signal("torch_picked_up", active_time)
 	
 	#disable collision shape and hide object
-	$Area2D/CollisionShape2D.disabled=true
+	$CollisionShape2D.disabled=true
 	visible = false
 
 

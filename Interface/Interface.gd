@@ -1,27 +1,34 @@
 extends Control
 
-onready var torchIndicator: ColorRect = $TorchIndicator
-onready var torchRect: ColorRect = $TorchIndicator/ColorRect
+onready var torchUI: Control = $TorchUI
+onready var torchRect: ColorRect = $TorchUI/TorchIndicator/ColorRect
 onready var state = $State/StateLabel
+
 
 var size: Vector2 = Vector2.ZERO
 
 var active_time = 2
 
 func _ready():
-	torchIndicator.visible = false
 	torchRect.set_size(size)
 	
 	$State/RetriesLabel.text = "Retries: " + String(GameState.retries)
 	$State/BeaconsLevel.text = "Beacons: " + String(GameState.beacons_lit) 
 
+func _process(delta):
+	pass
+	#if GameState.level_succeeded_state and $TorchUI.visible:
+	#	$TorchUI.visible = false
+
 func _on_Torch_time_changed(time_left):	
-	var x = time_left/active_time * 100
-	torchRect.set_size(Vector2(x, 15))
+	if !GameState.level_succeeded_state:
+		var x_percent = time_left/active_time 
+		torchRect.set_size(Vector2(500 * x_percent, 20))
 
 
 func _on_Torch_torch_picked_up(time):
-	torchIndicator.visible = true
+	$TorchUI.visible = true
+	#torchIndicator.visible = true
 	active_time = time
 
 

@@ -13,6 +13,7 @@ var retries: int = 3
 
 var _retry_state: bool = false
 var level_succeeded: bool = false
+var level_succeeded_state: bool = false
 var input_on = true
 
 export var level_blocks: int = 3
@@ -34,6 +35,7 @@ func _process(delta):
 func reset_state():
 	input_on = true
 	level_succeeded = false
+	level_succeeded_state = false
 	_retry_state = false
 	Engine.set_time_scale(1)
 
@@ -61,16 +63,19 @@ func game_over():
 
 
 func level_succeeded():
-	Engine.set_time_scale(0.2)
-	yield(get_tree().create_timer(0.1), "timeout")
-	Engine.set_time_scale(0)
-	input_on = false
 	beacons_lit += 1
+	level_succeeded_state = true
+	input_on = false
+	Engine.set_time_scale(0.5)
+	#yield(get_tree().create_timer(2), "timeout")
+	#Engine.set_time_scale(0)
+
 	level_succeeded = true
 
 
 func level_failed():
-	if !_retry_state:
+	if !_retry_state and !level_succeeded_state:
+		emit_signal("level_failed")
 		_retry_state = true
 		input_on = false
 		Engine.set_time_scale(0.2)	

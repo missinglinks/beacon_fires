@@ -5,8 +5,9 @@
 [node name="LevelGenerationTestScene" type="Node2D"]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
-size = 6
+size = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 0, -1000 )
 current = true
 zoom = Vector2( 10, 10 )
