@@ -26,14 +26,14 @@ margin_left = 252.666
 margin_top = 492.219
 margin_right = 762.666
 margin_bottom = 522.219
-color = Color( 0.65098, 0.509804, 0.423529, 0.243137 )
+color = Color( 1, 1, 1, 0.745098 )
 
 [node name="ColorRect" type="ColorRect" parent="TorchUI/TorchIndicator"]
-margin_left = 4.45935
+margin_left = 5.3396
 margin_top = 5.13867
-margin_right = 504.459
+margin_right = 505.339
 margin_bottom = 25.1387
-color = Color( 1, 0.745098, 0.45098, 1 )
+color = Color( 0.803922, 0.396078, 0.388235, 1 )
 
 [node name="State" type="ColorRect" parent="."]
 visible = false

@@ -13,7 +13,8 @@ script = ExtResource( 1 )
 gravity_vec = Vector2( 0, 0 )
 
 [node name="GroundTextureRect" type="TextureRect" parent="Ground"]
-margin_right = 500.0
+margin_left = -250.0
+margin_right = 750.0
 margin_bottom = 500.0
 expand = true
 stretch_mode = 2
@@ -22,17 +23,3 @@ stretch_mode = 2
 position = Vector2( 250, 250 )
 shape = SubResource( 1 )
 disabled = true
-
-[node name="Borders" type="StaticBody2D" parent="."]
-
-[node name="RightCollision" type="CollisionShape2D" parent="Borders"]
-position = Vector2( 750, 250 )
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Borders/RightCollision"]
-
-[node name="LeftCollision" type="CollisionShape2D" parent="Borders"]
-position = Vector2( -250, 250 )
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Borders/LeftCollision"]

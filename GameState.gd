@@ -17,6 +17,7 @@ var level_succeeded_state: bool = false
 var input_on = true
 
 export var level_blocks: int = 3
+
 var level_height
 var level_width
 
