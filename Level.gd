@@ -37,7 +37,7 @@ func generate_level():
 	print("build level")
 	print(GameState.level_blocks)
 	
-	for i in range(0, GameState.level_blocks-1):
+	for i in range(0, GameState.level_blocks):
 		var b = block.instance()
 		y_pos = y_start - (i * block_h)
 		b.position = Vector2(-250, y_start - (i * block_h))

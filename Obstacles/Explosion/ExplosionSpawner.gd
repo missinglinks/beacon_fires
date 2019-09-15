@@ -1,9 +1,10 @@
 extends Node
 
 onready var cooldown_timer: Timer = $CooldownTimer
-onready var player = get_parent().get_node("Player")
+onready var player = get_node("../../../Player")
 
 export var cooldown: float = 0.8
+export var indication_time: float = 0.5
 export var y_variance: float = 50
 export var x_variance: float = 50
 
@@ -43,15 +44,15 @@ func _on_CooldownTimer_timeout():
 		var y = player.position.y + player.motion.normalized().y * 150 + rand_range(-x_variance, +x_variance)
 		ex.position = Vector2(x, y)
 		add_child(ex)
-		ex.indication_time = 1
+		ex.indication_time = indication_time
 		
 	if player and spawn_snake:
 		var ex = explosion.instance()
 		ex.position = player.position
 		add_child(ex)
-		ex.indication_time = 0.5		
+		ex.indication_time = indication_time
 
 
 func _on_LineTimer_timeout():
-	if spawn_lines:
+	if spawn_lines and player:
 		spawn_line(player.position.y - rand_range(100, 250))

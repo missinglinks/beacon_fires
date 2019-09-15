@@ -9,7 +9,7 @@ export var dash_speed: float = 800
 
 var current_move_target: Vector2 = Vector2.ZERO
 
-onready var target = get_parent().get_node("../Player")
+onready var target = get_parent().get_node("../../../Player")
 
 func _draw():
 	pass

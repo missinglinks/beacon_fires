@@ -18,7 +18,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.2
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -34,7 +34,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4 ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 7.84019, 11.8271 )
 
 [node name="DashEnemy" type="KinematicBody2D"]
@@ -56,7 +56,7 @@ hframes = 5
 frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/BaseAnimation = SubResource( 3 )
+anims/BaseAnimation = SubResource( 2 )
 
 [node name="States" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -97,7 +97,7 @@ offset = Vector2( 0, 0.034 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -0.88484, -0.272414 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 [connection signal="timeout" from="States/Attack/WindupTimer" to="States/Attack" method="_on_WindupTimer_timeout"]
 [connection signal="timeout" from="States/Attack/WindupFollowTimer" to="States/Attack" method="_on_WindupFollowTimer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
