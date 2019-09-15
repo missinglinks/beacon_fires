@@ -4,7 +4,11 @@ var levels = [
 	preload("res://LevelSetups/Level1.tscn"),
 	preload("res://LevelSetups/Level2.tscn"),
 	preload("res://LevelSetups/Level3.tscn"),
-	preload("res://LevelSetups/Level4.tscn")
+	preload("res://LevelSetups/Level4.tscn"),
+	preload("res://LevelSetups/Level5.tscn"),
+	preload("res://LevelSetups/Level6.tscn"),
+	preload("res://LevelSetups/Level7.tscn"),
+	preload("res://LevelSetups/Level8.tscn")
 ]
 
 func _ready():

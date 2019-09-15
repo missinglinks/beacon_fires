@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Obstacles/ObstacleSpawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Obstacles/Explosion/ExplosionSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/DashEnemy/DashEnemySpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/Mage/Mage.tscn" type="PackedScene" id=4]
+
+[node name="Level1" type="Node2D"]
+
+[node name="ObstracleSpawner" parent="." instance=ExtResource( 1 )]
+num_obstacles = 5
+
+[node name="ExplosionSpawner" parent="." instance=ExtResource( 2 )]
+cooldown = 0.2
+indication_time = 0.8
+spawn_lines = false
+
+[node name="DashEnemySpawner" parent="." instance=ExtResource( 3 )]
+num_enemies = 0
+
+[node name="Mage" parent="." instance=ExtResource( 4 )]
+position = Vector2( 75, -1000 )
+z_index = 4
+concurrent = 2
+
+[node name="Mage2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -75, -400 )
+z_index = 4
+concurrent = 2
