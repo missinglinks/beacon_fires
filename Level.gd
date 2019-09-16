@@ -18,7 +18,6 @@ var block = preload("res://Levels/Block.tscn")
 #var start_block = preload("res://Levels/StartBlock.tscn")
 
 func _ready():
-	print("ggggggggggggenerate level")
 	generate_level()	
 	
 func generate_level():
@@ -33,9 +32,6 @@ func generate_level():
 	s.z_index = -10
 	$Blocks.add_child(s)	
 	y_start -= block_h
-	
-	print("build level")
-	print(GameState.level_blocks)
 	
 	for i in range(0, GameState.level_blocks):
 		var b = block.instance()

@@ -37,7 +37,7 @@ func spawn_line(y):
 
 func _on_CooldownTimer_timeout():
 
-	if player and spawn_path:
+	if player and spawn_path and GameState.action_state:
 		var ex = explosion.instance()
 		var x = player.position.x + player.motion.normalized().x * 150 + rand_range(-x_variance, +x_variance)
 		x = clamp(x, -250, 250)
@@ -46,7 +46,7 @@ func _on_CooldownTimer_timeout():
 		add_child(ex)
 		ex.indication_time = indication_time
 		
-	if player and spawn_snake:
+	if player and spawn_snake and GameState.action_state:
 		var ex = explosion.instance()
 		ex.position = player.position
 		add_child(ex)
@@ -54,5 +54,5 @@ func _on_CooldownTimer_timeout():
 
 
 func _on_LineTimer_timeout():
-	if spawn_lines and player:
+	if spawn_lines and player and GameState.action_state:
 		spawn_line(player.position.y - rand_range(100, 250))

@@ -12,6 +12,16 @@ var direction: String = "up"
 var input_on: bool = true
 
 signal state_changed(new_state)
+signal enter_action_area()
+signal leave_action_area()
+
+
+func _process(delta):
+	if !GameState.action_state and (position.y < 0 and position.y > - GameState.level_height):
+		GameState.action_state = true
+	elif GameState.action_state and position.y < -GameState.level_height:
+		GameState.action_state = false
+	
 
 """
 Return current controller input axis, and sets player looking direction

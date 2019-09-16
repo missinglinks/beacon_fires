@@ -19,5 +19,4 @@ func _ready():
 
 func get_random_level():
 	var i = randi() % levels.size()
-	print(i)
 	return levels[i]

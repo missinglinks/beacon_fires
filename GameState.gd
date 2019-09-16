@@ -12,6 +12,7 @@ var beacons_lit: int = 0
 var retries: int = 3
 
 var _retry_state: bool = false
+var action_state: bool = true
 var level_succeeded: bool = false
 var level_succeeded_state: bool = false
 var input_on = true
@@ -29,11 +30,14 @@ func _ready():
 	level_width = 500
 
 func _process(delta):
+	
 	if Input.is_action_pressed("interact") and _retry_state and retries > 0:
 		reset_level()
 
 
 func reset_state():
+	print("reset game state")
+	action_state = false
 	input_on = true
 	level_succeeded = false
 	level_succeeded_state = false
@@ -86,3 +90,4 @@ func level_failed():
 func _on_RetryTimer_timeout():
 	if _retry_state:
 		game_over()
+
