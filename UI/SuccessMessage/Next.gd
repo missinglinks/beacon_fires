@@ -4,7 +4,6 @@ var _text
 
 func _ready():
 	_text = text
-	
 
 
 func _on_Next_focus_entered():

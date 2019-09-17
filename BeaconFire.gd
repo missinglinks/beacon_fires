@@ -1,8 +1,8 @@
 extends Interactible
 
-var fire = preload("res://Effects/FireParticles.tscn")
-
 onready var torch: Interactible = get_node("../Torch")
+
+var fire = preload("res://Effects/FireParticles.tscn")
 
 signal beacon_lit()
 

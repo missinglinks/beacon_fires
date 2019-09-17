@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-onready var anim : AnimationPlayer = $AnimationPlayer
+onready var target = get_parent().get_node("../../../Player")
+onready var anim = $AnimationPlayer
 
 export var move_speed: float = 50
 export var attack_windup: float = 1
@@ -9,7 +10,7 @@ export var dash_speed: float = 800
 
 var current_move_target: Vector2 = Vector2.ZERO
 
-onready var target = get_parent().get_node("../../../Player")
+var bullet = preload("res://Enemies/Bullet/Bullet.tscn")
 
 func _draw():
 	pass

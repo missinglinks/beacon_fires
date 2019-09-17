@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://StartMenu/StartMenu.gd" type="Script" id=1]
 [ext_resource path="res://sprites/StartMenu/title_card.png" type="Texture" id=2]
+[ext_resource path="res://UI/Elements/MenuButton.tscn" type="PackedScene" id=3]
 
 [node name="StartMenu" type="Control"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.602539
@@ -19,39 +19,23 @@ anchor_bottom = 1.0
 texture = ExtResource( 2 )
 expand = true
 
-[node name="StartGameButton" type="Button" parent="."]
+[node name="NewGame" parent="." instance=ExtResource( 3 )]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -400.603
-margin_top = 109.397
-margin_right = -250.603
-margin_bottom = 129.397
-focus_neighbour_bottom = NodePath("../Controls")
-text = "Start game"
+margin_left = -401.0
+margin_top = 119.397
+margin_right = -196.0
+margin_bottom = 135.397
+text = "New game"
 
-[node name="Controls" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -400.603
-margin_top = 149.397
-margin_right = -250.603
-margin_bottom = 169.397
-focus_neighbour_bottom = NodePath("../ExitButton")
-text = "Controls"
-
-[node name="ExitButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -400.603
-margin_top = 189.397
-margin_right = -250.603
-margin_bottom = 209.397
-text = "Exit to desktop"
-[connection signal="pressed" from="StartGameButton" to="." method="_on_StartGameButton_pressed"]
-[connection signal="pressed" from="ExitButton" to="." method="_on_ExitButton_pressed"]
+[node name="Exit" parent="." instance=ExtResource( 3 )]
+margin_left = 79.3975
+margin_top = 419.397
+margin_right = -680.603
+margin_bottom = -90.6025
+focus_neighbour_top = NodePath("../NewGame")
+text = "Exit"
+[connection signal="pressed" from="NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

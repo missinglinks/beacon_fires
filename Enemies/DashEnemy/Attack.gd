@@ -6,7 +6,6 @@ var indication_time
 
 var target_dir
 
-#onready var windup_particles = get_node("../../WindupParticles") 
 onready var indicator_sprite: Sprite = get_node("../../IndicationSprite")
 onready var indicator_tween: Tween = indicator_sprite.get_node("Tween")
 
@@ -15,7 +14,6 @@ func enter(host):
 	dash_speed = host.dash_speed
 	$WindupTimer.wait_time = host.attack_windup
 	$WindupFollowTimer.wait_time = host.attack_windup * 0.8
-	
 	indication_time = host.attack_windup * 0.2
 	
 	start_attack(host)
@@ -30,7 +28,6 @@ func exit(host):
 	indicator_sprite.visible = false
 
 func start_attack(host):
-	#target_position = host.target.global_position
 	$WindupTimer.start()	
 	$WindupFollowTimer.start()
 

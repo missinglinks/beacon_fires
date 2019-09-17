@@ -2,11 +2,12 @@ extends Control
 
 
 func _ready():
-	$StartGameButton.grab_focus()
+	$NewGame.grab_focus()
 
-func _on_StartGameButton_pressed():
+
+func _on_NewGame_pressed():
 	get_tree().change_scene("res://World.tscn")
 
 
-func _on_ExitButton_pressed():
+func _on_Exit_pressed():
 	get_tree().quit()

@@ -4,15 +4,11 @@ onready var vis: VisibilityNotifier2D= get_node("../../VisibilityNotifier")
 
 func enter(host):
 	host.set_movement(Vector2(rand_range(-250, 250), rand_range(0, -2000)), 20)
-	#host.current_move_target = Vector2(rand_range(-250, 250), rand_range(0, -2000))
 	
 func update(delta, host):
-	
-	#var motion_dir = host.current_move_target - host.position
-	#motion_dir = motion_dir.normalized()
-	
 	if host.target:
-		if host.position.distance_to(host.target.position) < host.notice_radius and vis.is_on_screen():
+		var pos_to_target = host.position.distance_to(host.target.position)
+		if pos_to_target < host.notice_radius and vis.is_on_screen() and GameState.state == GameState.states.Action:
 			return state_machine.states.Attack
 
 func exit(host):

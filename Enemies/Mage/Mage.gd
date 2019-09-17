@@ -1,12 +1,14 @@
 extends KinematicBody2D
 
+export var shoot_rot: float = 0.5
+export var concurrent: int = 1
+export var cooldown: float = 0.5
+
+var current_rot 
 var bullet = preload("res://Enemies/Bullet/Bullet.tscn")
 
-export var shoot_rot = 0.5
-export var concurrent = 1
-var current_rot 
-
 func _ready():
+	$Cooldown.wait_time = cooldown
 	$Cooldown.start()
 	current_rot = PI * 1.5
 
