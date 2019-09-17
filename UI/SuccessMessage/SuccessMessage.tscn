@@ -1,11 +1,12 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://SuccessMessage.gd" type="Script" id=1]
+[ext_resource path="res://UI/SuccessMessage/SuccessMessage.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Success_small.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Fonts/Success.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://UI/SuccessMessage/Next.gd" type="Script" id=5]
 [ext_resource path="res://UI/SuccessMessage/Exit.gd" type="Script" id=6]
+
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
