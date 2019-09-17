@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Enemies/DashEnemy/DashEnemy.gd" type="Script" id=1]
 [ext_resource path="res://sprites/enemies/particles.png" type="Texture" id=2]
 [ext_resource path="res://sprites/enemies/enemy1.png" type="Texture" id=3]
 [ext_resource path="res://Enemies/DashEnemy/States.gd" type="Script" id=4]
 [ext_resource path="res://Enemies/DashEnemy/Wandering.gd" type="Script" id=5]
-[ext_resource path="res://Enemies/DashEnemy/Attack.gd" type="Script" id=6]
-[ext_resource path="res://sprites/enemies/indicatorArrow.png" type="Texture" id=7]
+[ext_resource path="res://Enemies/DashEnemy/Windup.gd" type="Script" id=6]
+[ext_resource path="res://Enemies/DashEnemy/Attack.gd" type="Script" id=7]
+[ext_resource path="res://sprites/enemies/indicatorArrow.png" type="Texture" id=8]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 1
@@ -64,19 +65,23 @@ script = ExtResource( 4 )
 [node name="Wandering" type="Node" parent="States"]
 script = ExtResource( 5 )
 
-[node name="Attack" type="Node" parent="States"]
-editor/display_folded = true
+[node name="Windup" type="Node" parent="States"]
 script = ExtResource( 6 )
 
-[node name="WindupTimer" type="Timer" parent="States/Attack"]
+[node name="WindupTimer" type="Timer" parent="States/Windup"]
 one_shot = true
 
-[node name="WindupFollowTimer" type="Timer" parent="States/Attack"]
+[node name="WindupFollowTimer" type="Timer" parent="States/Windup"]
 wait_time = 0.5
 one_shot = true
 
+[node name="Attack" type="Node" parent="States"]
+script = ExtResource( 7 )
+
+[node name="TrailTimer" type="Timer" parent="States/Attack"]
+wait_time = 0.03
+
 [node name="StateLabel" type="Label" parent="."]
-visible = false
 margin_left = -18.3859
 margin_top = -31.0889
 margin_right = 21.6141
@@ -90,7 +95,7 @@ editor/display_folded = true
 visible = false
 position = Vector2( -0.0693407, -0.0337048 )
 rotation = 1.5708
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 0, 0.034 )
 
 [node name="Tween" type="Tween" parent="IndicationSprite"]
@@ -101,6 +106,7 @@ editor/display_folded = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -0.88484, -0.272414 )
 shape = SubResource( 3 )
-[connection signal="timeout" from="States/Attack/WindupTimer" to="States/Attack" method="_on_WindupTimer_timeout"]
-[connection signal="timeout" from="States/Attack/WindupFollowTimer" to="States/Attack" method="_on_WindupFollowTimer_timeout"]
+[connection signal="timeout" from="States/Windup/WindupTimer" to="States/Windup" method="_on_WindupTimer_timeout"]
+[connection signal="timeout" from="States/Windup/WindupFollowTimer" to="States/Windup" method="_on_WindupFollowTimer_timeout"]
+[connection signal="timeout" from="States/Attack/TrailTimer" to="States/Attack" method="_on_TrailTimer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

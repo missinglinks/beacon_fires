@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/ground/ground1.png" type="Texture" id=2]
-[ext_resource path="res://Enemies/Mage/Mage.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/DashEnemy/DashEnemy.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -26,6 +26,5 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 2
 
-[node name="Mage" parent="." instance=ExtResource( 3 )]
-position = Vector2( 6.9342, -11.3715 )
-concurrent = 8
+[node name="DashEnemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 127.943, -122.774 )

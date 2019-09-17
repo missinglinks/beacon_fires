@@ -2,6 +2,7 @@ extends StateMachine
 
 func _ready():
 	_add_state("Wandering", $Wandering)
+	_add_state("Windup", $Windup)
 	_add_state("Attack", $Attack)
 	
 	

@@ -13,7 +13,9 @@ var points: int = 0
 var beacons_lit: int = 0
 var retries: int = 3
 
+#important global variables
 var state setget ,current_state
+var player = null setget ,get_player
 
 # general game management variables
 var input_on = true
@@ -30,6 +32,13 @@ func _ready():
 	level_height = level_blocks * 500
 	level_width = 500
 
+
+func get_player():
+	if !player:
+		var players = get_tree().get_nodes_in_group("Player")
+		if players:
+			player = players[0]
+	return player
 
 func current_state():
 	return state_machine.state

@@ -1,42 +1,40 @@
 extends KinematicBody2D
 
-onready var target = get_parent().get_node("../../../Player")
 onready var anim = $AnimationPlayer
 
-export var move_speed: float = 50
+export var move_speed: float = 20
 export var attack_windup: float = 1
 export var notice_radius: float = 400
 export var dash_speed: float = 800
 
+var target
 var current_move_target: Vector2 = Vector2.ZERO
+var dash_target
 
 var bullet = preload("res://Enemies/Bullet/Bullet.tscn")
 
 func _draw():
-	pass
-	"""
-	if $States/Attack.target_position:
-	 	draw_line(Vector2.ZERO,  $States/Attack.target_position - position, Color(255, 0, 0), 1)
-	"""
+	if dash_target:
+	 	draw_line(Vector2.ZERO,  dash_target - position, Color(255, 0, 0), 1)
+	
 
 func _ready():
+	target = GameState.player
 	anim.play("BaseAnimation")
-	
-func _physics_process(delta):
-	if current_move_target != Vector2.ZERO:
-		move_and_collide((current_move_target - position).normalized() * move_speed * delta)
-		
-	if current_move_target.distance_to(position) < 20:
-		current_move_target = Vector2.ZERO
+
+
+func dash(delta):
+	move_and_collide((dash_target - position).normalized() * dash_speed * delta)
 
 
 func set_movement(target, speed):
-	move_speed =  speed
 	current_move_target = target
 
-func move_body(delta, motion):
-	move_and_collide(motion)
-	
+
+func move_body(delta):
+	move_and_collide((current_move_target - position).normalized() * move_speed * delta)
+
+
 func _process(delta):
 	update()
 	if $States.state.name != $StateLabel.text:
