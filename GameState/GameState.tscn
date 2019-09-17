@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://GameState/GameState.gd" type="Script" id=1]
+[ext_resource path="res://GameState/States.gd" type="Script" id=2]
+[ext_resource path="res://GameState/Init.gd" type="Script" id=3]
+[ext_resource path="res://GameState/Action.gd" type="Script" id=4]
+[ext_resource path="res://GameState/Retry.gd" type="Script" id=5]
+[ext_resource path="res://GameState/Fail.gd" type="Script" id=6]
+[ext_resource path="res://GameState/Success.gd" type="Script" id=7]
+
+[node name="GameState" type="Node"]
+script = ExtResource( 1 )
+
+[node name="States" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Init" type="Node" parent="States"]
+script = ExtResource( 3 )
+
+[node name="Action" type="Node" parent="States"]
+script = ExtResource( 4 )
+
+[node name="Retry" type="Node" parent="States"]
+editor/display_folded = true
+script = ExtResource( 5 )
+
+[node name="RetryTimer" type="Timer" parent="States/Retry"]
+one_shot = true
+
+[node name="Fail" type="Node" parent="States"]
+script = ExtResource( 6 )
+
+[node name="Success" type="Node" parent="States"]
+script = ExtResource( 7 )
+[connection signal="timeout" from="States/Retry/RetryTimer" to="States/Retry" method="_on_RetryTimer_timeout"]

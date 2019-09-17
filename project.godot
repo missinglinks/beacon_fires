@@ -43,7 +43,7 @@ run/main_scene="res://StartMenu/StartMenu.tscn"
 
 [autoload]
 
-GameState="*res://GameState.tscn"
+GameState="*res://GameState/GameState.tscn"
 
 [display]
 

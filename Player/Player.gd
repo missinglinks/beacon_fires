@@ -17,10 +17,10 @@ signal leave_action_area()
 
 
 func _process(delta):
-	if !GameState.action_state and (position.y < 0 and position.y > - GameState.level_height):
-		GameState.action_state = true
-	elif GameState.action_state and position.y < -GameState.level_height:
-		GameState.action_state = false
+	if GameState.state == GameState.states.Init and (position.y < 0 and position.y > - GameState.level_height):
+		GameState.state_machine._transition_to(GameState.states.Action)
+	elif GameState.state == GameState.states.Action and position.y < -GameState.level_height:
+		GameState.state_machine._transition_to(GameState.states.Init)
 	
 
 """

@@ -40,8 +40,6 @@ func _process(delta):
 	update()
 	if $States.state.name != $StateLabel.text:
 		$StateLabel.text = $States.state.name
-	
-
 
 
 func _on_Area2D_body_entered(body):

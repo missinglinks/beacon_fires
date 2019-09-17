@@ -12,20 +12,19 @@ func _ready():
 
 
 func action():
-	if torch.is_active and !GameState._retry_state:
-		
+	if torch.is_active and GameState.state != GameState.states.Retry:
+		#light fire
 		var f = fire.instance()
 		f.scale = Vector2(6,6)
 		f.position -= Vector2(0, -30)
-
 		add_child(f)
-		
-		print("beacon fire lit")
 		emit_signal("beacon_lit")
-		GameState.level_succeeded()
+		
+		#disable collisions
 		$CollisionShape2D.disabled = true
-	else:
-		print("cannot light beacon fire")
+		
+		#set gamestate to succes
+		GameState.state_machine._transition_to(GameState.states.Success)
 
 
 func _on_Torch_torch_picked_up(active_time):

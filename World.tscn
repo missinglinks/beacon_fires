@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/World.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -12,15 +12,14 @@
 [ext_resource path="res://Interface/Interface.tscn" type="PackedScene" id=10]
 [ext_resource path="res://FailedMessage.gd" type="Script" id=11]
 [ext_resource path="res://UI/SuccessMessage/SuccessMessage.tscn" type="PackedScene" id=12]
-[ext_resource path="res://GameState.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Obstacles/Explosion/ExplosionSpawner.tscn" type="PackedScene" id=14]
-[ext_resource path="res://BeaconFire/BeaconFire.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Levels/Backgrounds/Sprites/sky11.png" type="Texture" id=16]
-[ext_resource path="res://Levels/Backgrounds/Sprites/mt_b1.png" type="Texture" id=17]
-[ext_resource path="res://Levels/Backgrounds/Sprites/mt_f1.png" type="Texture" id=18]
-[ext_resource path="res://Debug.gd" type="Script" id=19]
-[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=20]
-[ext_resource path="res://LevelSetups/LevelSetupFactory.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Obstacles/Explosion/ExplosionSpawner.tscn" type="PackedScene" id=13]
+[ext_resource path="res://BeaconFire/BeaconFire.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/Backgrounds/Sprites/sky11.png" type="Texture" id=15]
+[ext_resource path="res://Levels/Backgrounds/Sprites/mt_b1.png" type="Texture" id=16]
+[ext_resource path="res://Levels/Backgrounds/Sprites/mt_f1.png" type="Texture" id=17]
+[ext_resource path="res://Debug.gd" type="Script" id=18]
+[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=19]
+[ext_resource path="res://LevelSetups/LevelSetupFactory.tscn" type="PackedScene" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.7703, 13.3421 )
@@ -144,13 +143,11 @@ margin_bottom = 46.0
 
 [node name="SuccessMessage" parent="InterfaceLayer" instance=ExtResource( 12 )]
 
-[node name="GameState" parent="." instance=ExtResource( 13 )]
-
-[node name="ExplosionSpawner" parent="." instance=ExtResource( 14 )]
+[node name="ExplosionSpawner" parent="." instance=ExtResource( 13 )]
 cooldown = 0.25
 spawn_lines = false
 
-[node name="BeaconFire" parent="." instance=ExtResource( 15 )]
+[node name="BeaconFire" parent="." instance=ExtResource( 14 )]
 position = Vector2( -3.669, -500 )
 
 [node name="Background" type="Node2D" parent="."]
@@ -168,32 +165,31 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 16 )
+texture = ExtResource( 15 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
 motion_scale = Vector2( 1.02, 1.02 )
 
 [node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/ParallaxLayer2"]
 position = Vector2( 50, 0 )
-texture = ExtResource( 17 )
+texture = ExtResource( 16 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Background/ParallaxBackground"]
 motion_scale = Vector2( 1.05, 1.05 )
 
 [node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/ParallaxLayer3"]
-texture = ExtResource( 18 )
+texture = ExtResource( 17 )
 
 [node name="Debug" type="Node2D" parent="."]
 visible = false
-script = ExtResource( 19 )
+script = ExtResource( 18 )
 
-[node name="Level" parent="." instance=ExtResource( 20 )]
+[node name="Level" parent="." instance=ExtResource( 19 )]
 
-[node name="LevelSetupFactory" parent="." instance=ExtResource( 21 )]
-[connection signal="state_changed" from="Player" to="InterfaceLayer/Interface" method="_on_Player_state_changed"]
+[node name="LevelSetupFactory" parent="." instance=ExtResource( 20 )]
 [connection signal="state_changed" from="Player" to="Player/PlayerCamera" method="_on_Player_state_changed"]
+[connection signal="state_changed" from="Player" to="InterfaceLayer/Interface" method="_on_Player_state_changed"]
 [connection signal="time_changed" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_time_changed"]
-[connection signal="torch_picked_up" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_torch_picked_up"]
 [connection signal="torch_picked_up" from="Torch" to="BeaconFire" method="_on_Torch_torch_picked_up"]
+[connection signal="torch_picked_up" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_torch_picked_up"]
 [connection signal="timeout" from="Torch/Timer" to="Torch" method="_on_Timer_timeout"]
-[connection signal="level_failed" from="GameState" to="BeaconFire" method="_on_GameState_level_failed"]

@@ -37,22 +37,23 @@ func spawn_line(y):
 
 func _on_CooldownTimer_timeout():
 
-	if player and spawn_path and GameState.action_state:
-		var ex = explosion.instance()
-		var x = player.position.x + player.motion.normalized().x * 150 + rand_range(-x_variance, +x_variance)
-		x = clamp(x, -250, 250)
-		var y = player.position.y + player.motion.normalized().y * 150 + rand_range(-x_variance, +x_variance)
-		ex.position = Vector2(x, y)
-		add_child(ex)
-		ex.indication_time = indication_time
+	if GameState.state == GameState.states.Action and player:
+		if spawn_path:
+			var ex = explosion.instance()
+			var x = player.position.x + player.motion.normalized().x * 150 + rand_range(-x_variance, +x_variance)
+			x = clamp(x, -250, 250)
+			var y = player.position.y + player.motion.normalized().y * 150 + rand_range(-x_variance, +x_variance)
+			ex.position = Vector2(x, y)
+			add_child(ex)
+			ex.indication_time = indication_time
 		
-	if player and spawn_snake and GameState.action_state:
-		var ex = explosion.instance()
-		ex.position = player.position
-		add_child(ex)
-		ex.indication_time = indication_time
+		if spawn_snake:
+			var ex = explosion.instance()
+			ex.position = player.position
+			add_child(ex)
+			ex.indication_time = indication_time
 
 
 func _on_LineTimer_timeout():
-	if spawn_lines and player and GameState.action_state:
+	if spawn_lines and player and GameState.state == GameState.states.Action:
 		spawn_line(player.position.y - rand_range(100, 250))

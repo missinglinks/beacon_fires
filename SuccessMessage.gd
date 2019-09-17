@@ -5,7 +5,7 @@ onready var player_camera = get_node("../../Player/PlayerCamera")
 var active = false
 
 func _process(delta):
-	if GameState.level_succeeded_state and active == false:
+	if GameState.state == GameState.states.Success and active == false:
 		active = true
 		_activate()
 
