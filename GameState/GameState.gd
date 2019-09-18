@@ -45,6 +45,7 @@ func current_state():
 
 
 func reset_level_state():
+	player = null
 	input_on = true
 	Engine.set_time_scale(1)
 	state_machine._transition_to(states.Init)	

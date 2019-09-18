@@ -3,9 +3,10 @@ extends KinematicBody2D
 onready var anim = $AnimationPlayer
 
 export var move_speed: float = 20
-export var attack_windup: float = 1
+export var attack_windup: float = 0.8
 export var notice_radius: float = 400
-export var dash_speed: float = 800
+export var dash_speed: float = 1000
+export var debug: bool = true
 
 var target
 var current_move_target: Vector2 = Vector2.ZERO
@@ -14,13 +15,16 @@ var dash_target
 var bullet = preload("res://Enemies/Bullet/Bullet.tscn")
 
 func _draw():
-	if dash_target:
+	if dash_target and debug:
 	 	draw_line(Vector2.ZERO,  dash_target - position, Color(255, 0, 0), 1)
 	
 
 func _ready():
 	target = GameState.player
 	anim.play("BaseAnimation")
+	
+	if !debug:
+		$StateLabel.visible = false
 
 
 func dash(delta):

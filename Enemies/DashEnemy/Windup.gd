@@ -4,6 +4,7 @@ var target_position
 var indication_time
 
 var target_dir
+var elapsed_time: float = 0
 
 onready var indicator_sprite: Sprite = get_node("../../IndicationSprite")
 onready var indicator_tween: Tween = indicator_sprite.get_node("Tween")
@@ -19,6 +20,9 @@ func enter(host):
 	start_windup(host)
 
 func update(delta, host):
+	elapsed_time += delta
+	host.position += Vector2(sin(elapsed_time*100)*5 * (host.attack_windup - windup_timer.time_left), 0)
+	
 	if host.target.position.distance_to(host.position) > host.notice_radius:
 		return state_machine.states.Wandering
 		

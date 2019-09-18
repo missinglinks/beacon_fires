@@ -1,8 +1,8 @@
-extends Control
+extends Node2D
 
 
 func _ready():
-	$NewGame.grab_focus()
+	$Menu/NewGame.grab_focus()
 
 
 func _on_NewGame_pressed():
@@ -11,3 +11,7 @@ func _on_NewGame_pressed():
 
 func _on_Exit_pressed():
 	get_tree().quit()
+
+
+func _on_FireTimer_timeout():
+	$FireParticles.emitting = true
