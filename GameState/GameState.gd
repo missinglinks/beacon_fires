@@ -11,6 +11,7 @@ onready var states = $States.states
 # game stats and variables
 var points: int = 0
 var beacons_lit: int = 0
+var shrines_activated: int = 0
 var retries: int = 3
 
 #important global variables
@@ -62,10 +63,16 @@ func reset_level():
 
 
 func restart_game():
+	shrines_activated = 0
 	beacons_lit = 0
 	retries = 3
 	reset_level_state()
 	get_tree().change_scene("res://World.tscn")	
+
+
+func activate_shrine():
+	shrines_activated += 1
+
 
 func level_failed():
 	if state_machine.state != states.Retry and state_machine.state != states.Success:

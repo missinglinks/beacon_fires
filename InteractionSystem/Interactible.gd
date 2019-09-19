@@ -12,6 +12,7 @@ The interactible object needs to have an Area2D/Collision node
 indicating the interactive area of the object.
 """
 
+var prompt_offset: Vector2 = Vector2.ZERO
 var interaction_prompt: String = "interact"
 var show_prompt: bool = true
 

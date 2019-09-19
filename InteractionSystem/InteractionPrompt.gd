@@ -10,9 +10,10 @@ func _ready():
 	visible = false
 
 func _on_Interactable_entered(body, interactible: Interactible):
-	$Label.text = interactible.interaction_prompt
-	get_parent().position = interactible.position
-	visible = true
+	if body.is_in_group("Player"):
+		$Label.text = interactible.interaction_prompt
+		get_parent().position = interactible.position + interactible.prompt_offset
+		visible = true
 	
 func _on_Interactable_exited(body, interactible: Interactible):
 	visible = false

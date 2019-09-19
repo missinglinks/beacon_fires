@@ -78,7 +78,6 @@ offset = Vector2( 0, 0.5 )
 one_shot = true
 
 [node name="InteractionSystem" type="Node" parent="."]
-editor/display_folded = true
 script = ExtResource( 7 )
 
 [node name="InteractionPromptNode" type="Node2D" parent="InteractionSystem"]
@@ -102,6 +101,7 @@ custom_fonts/font = SubResource( 2 )
 text = "text"
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="Interface" parent="InterfaceLayer" instance=ExtResource( 10 )]
 

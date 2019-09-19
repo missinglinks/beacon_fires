@@ -1,20 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://sprites/ground/ground1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/ground/ground1.png" type="Texture" id=1]
+[ext_resource path="res://InteractionSystem/InteractionSystem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/DashEnemy/DashEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://InteractionSystem/Interactor.gd" type="Script" id=5]
+[ext_resource path="res://Shrine/Shrine.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0.760559, 104.826 )
-MAX_SPEED = 250.0
-ACCELERATION = 2000.0
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
-
 [node name="Node2D" type="Node2D" parent="."]
+editor/display_folded = true
 z_index = -50
 
 [node name="TextureRect" type="TextureRect" parent="Node2D"]
@@ -22,9 +18,28 @@ margin_left = -477.0
 margin_top = -508.0
 margin_right = 523.0
 margin_bottom = 492.0
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 expand = true
 stretch_mode = 2
 
-[node name="DashEnemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 127.943, -122.774 )
+[node name="InteractionSystem" parent="." instance=ExtResource( 2 )]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="DashEnemy" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 223.63, -151.38 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 0.760559, 104.826 )
+MAX_SPEED = 250.0
+ACCELERATION = 2000.0
+
+[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
+current = true
+
+[node name="Interactor" type="Node" parent="YSort/Player"]
+script = ExtResource( 5 )
+
+[node name="Shrine" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( -220.495, 26.5099 )
