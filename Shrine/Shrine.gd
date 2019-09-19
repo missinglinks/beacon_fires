@@ -10,3 +10,4 @@ func action():
 	GameState.activate_shrine()
 	$ActivatedParticles.emitting = true
 	$CollisionShape2D.disabled = true
+	

@@ -14,7 +14,10 @@ var interaction_target: Interactible = null
 
 func _input(event):	
 	if event.is_action_pressed("interact") and can_interact:
-		interaction_target.action()
+		#interaction_target.action_pressed = true
+		interaction_target.action_pressed_start()
+	elif event.is_action_released("interact") and can_interact:
+		interaction_target.reset()	
 
 
 func _on_Interactable_entered(body, interaction_node: Interactible):

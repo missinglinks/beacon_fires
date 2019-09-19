@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sprites/ground/ground1.png" type="Texture" id=1]
 [ext_resource path="res://InteractionSystem/InteractionSystem.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemies/DashEnemy/DashEnemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://InteractionSystem/Interactor.gd" type="Script" id=5]
-[ext_resource path="res://Shrine/Shrine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://InteractionSystem/Interactor.gd" type="Script" id=4]
+[ext_resource path="res://Shrine/Shrine.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -26,10 +25,7 @@ stretch_mode = 2
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="DashEnemy" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 223.63, -151.38 )
-
-[node name="Player" parent="YSort" instance=ExtResource( 4 )]
+[node name="Player" parent="YSort" instance=ExtResource( 3 )]
 editor/display_folded = true
 position = Vector2( 0.760559, 104.826 )
 MAX_SPEED = 250.0
@@ -39,7 +35,7 @@ ACCELERATION = 2000.0
 current = true
 
 [node name="Interactor" type="Node" parent="YSort/Player"]
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 
-[node name="Shrine" parent="YSort" instance=ExtResource( 6 )]
+[node name="Shrine" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( -220.495, 26.5099 )

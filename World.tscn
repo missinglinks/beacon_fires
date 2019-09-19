@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/World.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -6,29 +6,21 @@
 [ext_resource path="res://PlayerCamera.gd" type="Script" id=4]
 [ext_resource path="res://Torch.gd" type="Script" id=5]
 [ext_resource path="res://sprites/torch.png" type="Texture" id=6]
-[ext_resource path="res://InteractionSystem/InteractionSystem.gd" type="Script" id=7]
-[ext_resource path="res://InteractionSystem/InteractionPrompt.gd" type="Script" id=8]
-[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://Interface/Interface.tscn" type="PackedScene" id=10]
-[ext_resource path="res://UI/RetryMessage/FailedMessage.gd" type="Script" id=11]
-[ext_resource path="res://UI/SuccessMessage/SuccessMessage.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Obstacles/Explosion/ExplosionSpawner.tscn" type="PackedScene" id=13]
-[ext_resource path="res://BeaconFire/BeaconFire.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Levels/Backgrounds/Sprites/sky11.png" type="Texture" id=15]
-[ext_resource path="res://Levels/Backgrounds/Sprites/mt_b1.png" type="Texture" id=16]
-[ext_resource path="res://Levels/Backgrounds/Sprites/mt_f1.png" type="Texture" id=17]
-[ext_resource path="res://Debug.gd" type="Script" id=18]
-[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=19]
-[ext_resource path="res://LevelSetups/LevelSetupFactory.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Interface/Interface.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/RetryMessage/FailedMessage.gd" type="Script" id=8]
+[ext_resource path="res://UI/SuccessMessage/SuccessMessage.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Obstacles/Explosion/ExplosionSpawner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://BeaconFire/BeaconFire.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Levels/Backgrounds/Sprites/sky11.png" type="Texture" id=12]
+[ext_resource path="res://Levels/Backgrounds/Sprites/mt_b1.png" type="Texture" id=13]
+[ext_resource path="res://Levels/Backgrounds/Sprites/mt_f1.png" type="Texture" id=14]
+[ext_resource path="res://Debug.gd" type="Script" id=15]
+[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=16]
+[ext_resource path="res://LevelSetups/LevelSetupFactory.tscn" type="PackedScene" id=17]
+[ext_resource path="res://InteractionSystem/InteractionSystem.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.7703, 13.3421 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 14
-outline_color = Color( 0.172549, 0.172549, 0.172549, 1 )
-use_mipmaps = true
-font_data = ExtResource( 9 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -77,40 +69,17 @@ offset = Vector2( 0, 0.5 )
 [node name="Timer" type="Timer" parent="Torch"]
 one_shot = true
 
-[node name="InteractionSystem" type="Node" parent="."]
-script = ExtResource( 7 )
-
-[node name="InteractionPromptNode" type="Node2D" parent="InteractionSystem"]
-
-[node name="InteractionPrompt" type="ColorRect" parent="InteractionSystem/InteractionPromptNode"]
-margin_right = 94.0
-margin_bottom = 23.0
-color = Color( 0.509804, 0.509804, 0.509804, 0 )
-script = ExtResource( 8 )
-
-[node name="Label" type="Label" parent="InteractionSystem/InteractionPromptNode/InteractionPrompt"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -28.0
-margin_top = -7.0
-margin_right = 28.0
-margin_bottom = 7.0
-custom_fonts/font = SubResource( 2 )
-text = "text"
-
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
 
-[node name="Interface" parent="InterfaceLayer" instance=ExtResource( 10 )]
+[node name="Interface" parent="InterfaceLayer" instance=ExtResource( 7 )]
 
 [node name="FailedMessage" type="Control" parent="InterfaceLayer"]
 editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 11 )
+script = ExtResource( 8 )
 
 [node name="ColorRect" type="ColorRect" parent="InterfaceLayer/FailedMessage"]
 anchor_left = 0.5
@@ -140,13 +109,13 @@ margin_top = 26.0
 margin_right = 175.0
 margin_bottom = 46.0
 
-[node name="SuccessMessage" parent="InterfaceLayer" instance=ExtResource( 12 )]
+[node name="SuccessMessage" parent="InterfaceLayer" instance=ExtResource( 9 )]
 
-[node name="ExplosionSpawner" parent="." instance=ExtResource( 13 )]
+[node name="ExplosionSpawner" parent="." instance=ExtResource( 10 )]
 cooldown = 0.25
 spawn_lines = false
 
-[node name="BeaconFire" parent="." instance=ExtResource( 14 )]
+[node name="BeaconFire" parent="." instance=ExtResource( 11 )]
 position = Vector2( -3.669, -500 )
 
 [node name="Background" type="Node2D" parent="."]
@@ -164,28 +133,30 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 15 )
+texture = ExtResource( 12 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
 motion_scale = Vector2( 1.02, 1.02 )
 
 [node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/ParallaxLayer2"]
 position = Vector2( 50, 0 )
-texture = ExtResource( 16 )
+texture = ExtResource( 13 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Background/ParallaxBackground"]
 motion_scale = Vector2( 1.05, 1.05 )
 
 [node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/ParallaxLayer3"]
-texture = ExtResource( 17 )
+texture = ExtResource( 14 )
 
 [node name="Debug" type="Node2D" parent="."]
 visible = false
-script = ExtResource( 18 )
+script = ExtResource( 15 )
 
-[node name="Level" parent="." instance=ExtResource( 19 )]
+[node name="Level" parent="." instance=ExtResource( 16 )]
 
-[node name="LevelSetupFactory" parent="." instance=ExtResource( 20 )]
+[node name="LevelSetupFactory" parent="." instance=ExtResource( 17 )]
+
+[node name="InteractionSystem" parent="." instance=ExtResource( 18 )]
 [connection signal="state_changed" from="Player" to="Player/PlayerCamera" method="_on_Player_state_changed"]
 [connection signal="state_changed" from="Player" to="InterfaceLayer/Interface" method="_on_Player_state_changed"]
 [connection signal="time_changed" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_time_changed"]
