@@ -189,6 +189,6 @@ script = ExtResource( 18 )
 [connection signal="state_changed" from="Player" to="Player/PlayerCamera" method="_on_Player_state_changed"]
 [connection signal="state_changed" from="Player" to="InterfaceLayer/Interface" method="_on_Player_state_changed"]
 [connection signal="time_changed" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_time_changed"]
-[connection signal="torch_picked_up" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_torch_picked_up"]
 [connection signal="torch_picked_up" from="Torch" to="BeaconFire" method="_on_Torch_torch_picked_up"]
+[connection signal="torch_picked_up" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_torch_picked_up"]
 [connection signal="timeout" from="Torch/Timer" to="Torch" method="_on_Timer_timeout"]

@@ -28,4 +28,3 @@ stretch_mode = 2
 
 [node name="DashEnemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 127.943, -122.774 )
-debug = false
