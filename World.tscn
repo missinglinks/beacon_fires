@@ -54,7 +54,7 @@ zoom_factor = 0.1
 "Interactible",
 ]]
 editor/display_folded = true
-position = Vector2( -13.3198, 144.614 )
+position = Vector2( -83.58, 240.189 )
 script = ExtResource( 5 )
 active_time = 20.0
 

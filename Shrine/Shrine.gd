@@ -6,8 +6,8 @@ func _ready():
 	prompt_offset = Vector2(-45, - 45)
 
 func action():
-	print("prayed at shrine")
 	GameState.activate_shrine()
 	$ActivatedParticles.emitting = true
 	$CollisionShape2D.disabled = true
+	is_disabled = true
 	

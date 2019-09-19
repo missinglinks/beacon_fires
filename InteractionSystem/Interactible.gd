@@ -14,7 +14,7 @@ indicating the interactive area of the object.
 
 var prompt_offset: Vector2 = Vector2.ZERO
 var interaction_prompt: String = "interact"
-var show_prompt: bool = true
+var is_disabled = false
 var activation_time = 0.75
 var action_pressed: bool = false
 var action_pressed_time: float = 0
@@ -23,7 +23,10 @@ var action_pressed_time: float = 0
 func action():
 	print("Item action")
 	
+	
 func reset():
+	print("reset")
+	Input.stop_joy_vibration(0)
 	action_pressed = false
 	action_pressed_time = 0
 	
@@ -37,5 +40,9 @@ func _process(delta):
 		action_pressed_time += delta
 		
 	if action_pressed_time > activation_time:
-		action()
 		reset()
+		print("after_reset")
+		Input.start_joy_vibration(0, 0.0, 0.5, .15)
+		action()
+		
+		

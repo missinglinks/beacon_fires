@@ -16,7 +16,6 @@ func _ready():
 func _process(delta):
 	if  visible:
 		if interactible.action_pressed_time > 0:
-			print(interactible.name)
 			$Label.visible = false
 			$Border.visible = true
 			$Border/Border2.rect_size = Vector2(50 * (interactible.action_pressed_time/interactible.activation_time), 10)
