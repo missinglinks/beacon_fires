@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://Scripts/StateMachine.gd"
+}, {
+"base": "Node",
+"class": "Upgrade",
+"language": "GDScript",
+"path": "res://UpgradeSystem/Upgrade.gd"
 } ]
 _global_script_class_icons={
 "Interactible": "",
 "Item": "",
 "State": "",
-"StateMachine": ""
+"StateMachine": "",
+"Upgrade": ""
 }
 
 [application]
@@ -44,6 +50,7 @@ run/main_scene="res://StartMenu/StartMenu.tscn"
 [autoload]
 
 GameState="*res://GameState/GameState.tscn"
+PlayerStats="*res://PlayerStats/PlayerStats.gd"
 
 [display]
 

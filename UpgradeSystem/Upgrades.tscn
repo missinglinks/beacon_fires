@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UpgradeSystem/Upgrades.gd" type="Script" id=1]
+[ext_resource path="res://UpgradeSystem/RetryUpgrade.gd" type="Script" id=2]
+[ext_resource path="res://UpgradeSystem/TorchUpgrade.gd" type="Script" id=3]
+[ext_resource path="res://UpgradeSystem/MoveSpeedUpgrade.gd" type="Script" id=4]
 
 [node name="Upgrades" type="Node"]
 script = ExtResource( 1 )
+
+[node name="RetryUpgrade" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="TorchUpgrade" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="MoveSpeedUpgrade" type="Node" parent="."]
+script = ExtResource( 4 )

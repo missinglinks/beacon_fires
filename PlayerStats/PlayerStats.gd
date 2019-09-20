@@ -14,6 +14,8 @@ var torch_time: float
 
 var immunities = []
 
+func _ready():
+	reset()
 
 func reset():
 	move_speed = base_move_speed

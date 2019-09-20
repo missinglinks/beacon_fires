@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/RetryDisplay/RetryDisplay.gd" type="Script" id=1]
+
+[node name="RetryDisplay" type="Control"]
+margin_left = 39.7866
+margin_top = 487.054
+margin_right = 219.787
+margin_bottom = 507.054
+script = ExtResource( 1 )
+
+[node name="Container" type="GridContainer" parent="."]
+margin_left = 1.58667
+margin_top = 14.2801
+margin_right = 181.587
+margin_bottom = 54.2801
+columns = 8

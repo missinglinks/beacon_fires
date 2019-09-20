@@ -1,6 +1,10 @@
 extends Node
 
-var stat_upgrades = {}
-var immunity_upgrades = {}
-var immunity_upgrade_prob = 0.4
+var upgrades = []
 
+func _ready():
+	upgrades = self.get_children()
+	
+	print(PlayerStats.retries)
+	upgrades[0].apply()
+	print(PlayerStats.retries)
