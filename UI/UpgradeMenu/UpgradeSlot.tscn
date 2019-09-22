@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://UI/UpgradeMenu/UpgradeSlot.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.466667, 0.254902, 0.447059, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.466667, 0.254902, 0.447059, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.176471, 0.176471, 0.168627, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.176471, 0.176471, 0.168627, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 2 )
+
+[node name="UpgradeSlot" type="Button"]
+margin_left = 80.0
+margin_top = 40.0
+margin_right = 880.0
+margin_bottom = 180.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+script = ExtResource( 1 )
+
+[node name="Title" type="Label" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 570.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 6 )
+text = "Title"
+
+[node name="IconImage" type="TextureRect" parent="."]
+margin_left = 30.0
+margin_top = 60.0
+margin_right = 78.0
+margin_bottom = 108.0
+expand = true
+
+[node name="Description" type="Label" parent="."]
+margin_left = 110.0
+margin_top = 70.0
+margin_right = 780.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 7 )
+text = "description"

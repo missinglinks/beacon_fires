@@ -51,6 +51,7 @@ run/main_scene="res://StartMenu/StartMenu.tscn"
 
 GameState="*res://GameState/GameState.tscn"
 PlayerStats="*res://PlayerStats/PlayerStats.gd"
+Upgrades="*res://UpgradeSystem/Upgrades.tscn"
 
 [display]
 

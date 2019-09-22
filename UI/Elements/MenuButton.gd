@@ -1,14 +1,14 @@
 extends Button
 
-var _text 
+var _text: String
 
-func _ready():
+func _ready() -> void:
 	_text = text
 
 
-func _on_MenuButton_focus_entered():
+func _on_MenuButton_focus_entered() -> void:
 	text = "> " + _text
 
 
-func _on_MenuButton_focus_exited():
+func _on_MenuButton_focus_exited() -> void:
 	text = _text

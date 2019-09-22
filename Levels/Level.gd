@@ -1,8 +1,7 @@
 extends Node2D
 
-onready var interactor = get_node("../Player/Interactor")
-onready var interactionPrompt = get_node("../InteractionSystem/InteractionPromptNode")
 onready var beacon_fire = get_node("../BeaconFire")
+onready var shrine = get_node("../YSort/Shrine")
 
 #level configuration
 export var block_h: int = 500
@@ -39,4 +38,13 @@ func generate_level():
 	t.z_index = -10
 	$Blocks.add_child(t)
 	
+	#set beacen 
 	beacon_fire.position = t.position + t.get_beacon_fire_position()
+
+	#set shrine
+	y_pos = rand_range(-50, GameState.level_height)
+	var x_pos = rand_range(210, 240)
+	if randi() % 2 == 0:
+		x_pos *= -1
+	shrine.position = Vector2(x_pos, y_pos)
+	

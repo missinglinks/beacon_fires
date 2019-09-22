@@ -12,14 +12,18 @@ var retries: int
 var base_torch_time: float = 10
 var torch_time: float
 
+var base_cat_spawning_prob: float = 0.2
+var cat_spawning_prob: float
+
 var immunities = []
 
-func _ready():
+func _ready() -> void:
 	reset()
 
-func reset():
+func reset() -> void:
 	move_speed = base_move_speed
 	hp = base_hp
 	retries = base_retries
 	torch_time = base_torch_time
+	cat_spawning_prob = base_cat_spawning_prob
 	immunities = []

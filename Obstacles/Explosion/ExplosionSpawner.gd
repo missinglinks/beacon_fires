@@ -1,7 +1,6 @@
 extends Node
 
 onready var cooldown_timer: Timer = $CooldownTimer
-onready var player = get_node("../../../Player")
 
 export var cooldown: float = 0.8
 export var indication_time: float = 0.5
@@ -9,6 +8,7 @@ export var y_variance: float = 50
 export var x_variance: float = 50
 
 var explosion = preload("res://Obstacles/Explosion/Explosion.tscn")
+var player
 
 export var spawn_lines: bool = true
 export var spawn_path: bool = false
@@ -16,6 +16,7 @@ export var spawn_snake: bool = false
 
 
 func _ready():
+	player = GameState.player
 	cooldown_timer.wait_time = cooldown
 	$LineTimer.start()
 	

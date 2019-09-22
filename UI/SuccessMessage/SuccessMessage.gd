@@ -1,16 +1,17 @@
 extends Control
 
-onready var player_camera = get_node("../../Player/PlayerCamera")
-
+var player_camera 
 var active = false
+
+func _ready():
+	var player = GameState.player
+	if player:
+		player_camera = player.get_node("PlayerCamera")
 
 func _process(delta):
 	if GameState.state == GameState.states.Success and active == false:
 		active = true
 		_activate()
-
-func _on_Exit_pressed():
-	get_tree().quit()
 
 
 func _on_Next_pressed():
@@ -35,5 +36,16 @@ func _activate():
 	$BeaconLitMessage/Lit.visible=true
 
 	yield(get_tree().create_timer(0.2), "timeout")
-	$Buttons.visible=true	
-	$Buttons/Next.grab_focus()
+	$Buttons.visible=true
+	
+	var next_button: Button = $Buttons/Next
+	var fate_button: Button = $Buttons/Fate
+	if GameState.shrines_activated == GameState.next_upgrade:
+		next_button.queue_free()
+		fate_button.grab_focus()
+	else:
+		fate_button.queue_free()
+		next_button.grab_focu()
+
+func _on_Fate_pressed():
+	get_tree().change_scene("res://UI/UpgradeMenu/UpgradeSelection.tscn")

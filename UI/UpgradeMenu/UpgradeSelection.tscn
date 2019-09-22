@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/UpgradeMenu/UpgradeSelection.gd" type="Script" id=1]
+[ext_resource path="res://UI/UpgradeMenu/UpgradeSlot.tscn" type="PackedScene" id=2]
+
+[node name="UpgradeSelection" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="UpgradeSlot" parent="." instance=ExtResource( 2 )]
+
+[node name="UpgradeSlot2" parent="." instance=ExtResource( 2 )]
+margin_top = 200.0
+margin_bottom = 340.0
+
+[node name="UpgradeSlot3" parent="." instance=ExtResource( 2 )]
+margin_top = 360.0
+margin_bottom = 500.0
+[connection signal="pressed" from="UpgradeSlot" to="." method="_on_UpgradeSlot_pressed"]
+[connection signal="pressed" from="UpgradeSlot2" to="." method="_on_UpgradeSlot2_pressed"]
+[connection signal="pressed" from="UpgradeSlot3" to="." method="_on_UpgradeSlot3_pressed"]
