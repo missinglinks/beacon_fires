@@ -22,5 +22,5 @@ script = ExtResource( 4 )
 [node name="CatRateUpgrade" type="Node" parent="."]
 script = ExtResource( 5 )
 
-[node name="SumblingImmunityUpgrade" type="Node" parent="."]
+[node name="StumblingImmunityUpgrade" type="Node" parent="."]
 script = ExtResource( 6 )

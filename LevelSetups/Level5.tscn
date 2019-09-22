@@ -10,10 +10,10 @@
 num_obstacles = 5
 
 [node name="ExplosionSpawner" parent="." instance=ExtResource( 2 )]
-cooldown = 0.2
+cooldown = 1.2
 indication_time = 0.8
 spawn_lines = false
 spawn_snake = true
 
 [node name="DashEnemySpawner" parent="." instance=ExtResource( 3 )]
-num_enemies = 2
+num_enemies = 1

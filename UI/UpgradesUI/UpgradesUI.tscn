@@ -8,8 +8,8 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 
 [node name="Grid" type="GridContainer" parent="."]
-margin_left = 740.0
+margin_left = 780.0
 margin_top = 500.0
-margin_right = 950.0
+margin_right = 960.0
 margin_bottom = 540.0
 columns = 13

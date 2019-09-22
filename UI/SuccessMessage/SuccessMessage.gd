@@ -45,7 +45,7 @@ func _activate():
 		fate_button.grab_focus()
 	else:
 		fate_button.queue_free()
-		next_button.grab_focu()
+		next_button.grab_focus()
 
 func _on_Fate_pressed():
 	get_tree().change_scene("res://UI/UpgradeMenu/UpgradeSelection.tscn")

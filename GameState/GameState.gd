@@ -14,6 +14,7 @@ onready var states = $States.states
 var points: int = 0
 var beacons_lit: int = 0
 var shrines_activated: int = 0
+var shrine_active: bool = false
 var next_upgrade: int = UPGRADE_STEP
 var cats_petted: int = 0
 var retries: int = 3
@@ -53,6 +54,7 @@ func current_state() -> State:
 func reset_level_state() -> void:
 	player = null
 	input_on = true
+	shrine_active = false
 	Engine.set_time_scale(1)
 	state_machine._transition_to(states.Init)	
 
@@ -69,6 +71,7 @@ func reset_level() -> void:
 
 func restart_game() -> void:
 	shrines_activated = 0
+	shrine_active = false
 	beacons_lit = 0
 	retries = 3
 	cats_petted = 0
@@ -77,7 +80,7 @@ func restart_game() -> void:
 
 
 func activate_shrine() -> void:
-	shrines_activated += 1
+	shrine_active = true
 
 
 func level_failed() -> void:
@@ -87,6 +90,10 @@ func level_failed() -> void:
 		Engine.set_time_scale(0.2)
 		state_machine._transition_to($States.states.Retry)
 
+func level_succeeded() -> void:
+	if shrine_active:
+		shrines_activated += 1
+	state_machine._transition_to(GameState.states.Success)
 
 func game_over() -> void:
 	get_tree().change_scene("res://GameOverScreen/GameOverScreen.tscn")

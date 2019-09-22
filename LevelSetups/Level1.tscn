@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Obstacles/ObstacleSpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/DashEnemy/DashEnemySpawner.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemies/DashEnemy/DashEnemySpawner.gd" type="Script" id=3]
 
 [node name="Level1" type="Node2D"]
 
@@ -10,5 +9,4 @@
 num_obstacles = 10
 
 [node name="DashEnemySpawner" parent="." instance=ExtResource( 2 )]
-script = ExtResource( 3 )
-num_enemies = 3
+num_enemies = 2

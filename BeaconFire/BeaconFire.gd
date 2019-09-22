@@ -23,8 +23,7 @@ func action():
 		#disable collisions
 		$CollisionShape2D.disabled = true
 		
-		#set gamestate to succes
-		GameState.state_machine._transition_to(GameState.states.Success)
+		GameState.level_succeeded()
 
 
 func _on_Torch_torch_picked_up(active_time):

@@ -1,7 +1,7 @@
 extends Upgrade
 
 func _ready():
-	image = preload("res://UI/Sprites/icon_player_move_upgrade.png")
+	image = preload("res://UI/Sprites/icon_cat_prob.png")
 	title = "Cat person"
 	description = "Greatly improves chance of meeting cats"
 

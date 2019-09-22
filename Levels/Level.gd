@@ -42,7 +42,7 @@ func generate_level():
 	beacon_fire.position = t.position + t.get_beacon_fire_position()
 
 	#set shrine
-	y_pos = rand_range(-50, GameState.level_height)
+	y_pos = rand_range(-50, -GameState.level_height)
 	var x_pos = rand_range(210, 240)
 	if randi() % 2 == 0:
 		x_pos *= -1

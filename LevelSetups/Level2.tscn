@@ -9,4 +9,4 @@
 num_obstacles = 18
 
 [node name="DashEnemySpawner" parent="." instance=ExtResource( 2 )]
-num_enemies = 2
+num_enemies = 1

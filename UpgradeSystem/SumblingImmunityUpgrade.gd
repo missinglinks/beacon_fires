@@ -1,7 +1,7 @@
 extends Upgrade
 
 func _ready():
-	image = preload("res://UI/Sprites/icon_player_move_upgrade.png")
+	image = preload("res://UI/Sprites/icon_stumbling_immunity.png")
 	title = "Graceful movement"
 	description = "Never stumble over small objects"
 
