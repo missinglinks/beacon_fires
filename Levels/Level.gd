@@ -2,6 +2,7 @@ extends Node2D
 
 onready var beacon_fire = get_node("../BeaconFire")
 onready var shrine = get_node("../YSort/Shrine")
+onready var blocks = $Blocks
 
 #level configuration
 export var block_h: int = 500
@@ -12,10 +13,10 @@ var start1 = preload("res://Levels/Block.tscn")
 var block = preload("res://Levels/Block.tscn")
 
 
-func _ready():
-	generate_level()	
+func _ready() -> void:
+	generate_level()
 	
-func generate_level():
+func generate_level() -> void:
 	var y_start = 0
 	var y_pos = y_start
 		
@@ -23,22 +24,22 @@ func generate_level():
 	
 	s.position = Vector2(-250, y_start)
 	s.z_index = -10
-	$Blocks.add_child(s)	
+	blocks.add_child(s)
 	y_start -= block_h
 	
 	for i in range(0, GameState.level_blocks):
 		var b = block.instance()
 		y_pos = y_start - (i * block_h)
 		b.position = Vector2(-250, y_start - (i * block_h))
-		$Blocks.add_child(b)
+		blocks.add_child(b)
 		
 	y_pos -= block_h
 	var t = top1.instance()
 	t.position = Vector2(0, y_pos+250)
 	t.z_index = -10
-	$Blocks.add_child(t)
+	blocks.add_child(t)
 	
-	#set beacen 
+	#set beacon 
 	beacon_fire.position = t.position + t.get_beacon_fire_position()
 
 	#set shrine

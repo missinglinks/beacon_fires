@@ -1,6 +1,6 @@
 extends Sprite
 
-func _ready():
+func _ready() -> void:
 	$Tween.interpolate_property(
 		self, 
 		"modulate",  
@@ -12,5 +12,5 @@ func _ready():
 	$Tween.start()
 
 
-func _on_Tween_tween_all_completed():
+func _on_Tween_tween_all_completed() -> void:
 	queue_free()

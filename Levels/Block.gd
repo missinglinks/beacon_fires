@@ -6,13 +6,13 @@ var right_block = preload("res://Levels/Grass/Blocks/Right1.tscn")
 var left_block = preload("res://Levels/Grass/Blocks/Left1.tscn")
 
 
-func _draw():
+func _draw() -> void:
 	pass
 	#draw_rect(Rect2(Vector2(-500, 0), Vector2(500,500)), Color.yellow, false)
 	#draw_rect(Rect2(Vector2(500, 0), Vector2(500,500)), Color.yellow, false)
 	#draw_rect(Rect2(Vector2.ZERO, Vector2(500,500)), Color.red, false)
 
-func _process(delta):
+func _process(delta: float) -> void:
 	update()
 
 func _ready():
@@ -25,11 +25,3 @@ func _ready():
 	r.position = Vector2(750, 250)
 	r.z_index = 50
 	add_child(r)
-	
-	
-	#$Borders/LeftCollision/Sprite.texture = border_left
-	#$Borders/RightCollision/Sprite.texture = border_right
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

@@ -42,6 +42,7 @@ extents = Vector2( 7.84019, 11.8271 )
 script = ExtResource( 1 )
 attack_windup = 1.3
 notice_radius = 300.0
+dash_speed = 800.0
 
 [node name="WindupParticles" type="Particles2D" parent="."]
 emitting = false

@@ -1,11 +1,14 @@
 extends Node
 
 onready var obstacle1 = preload("res://Obstacles/Obstacle1.tscn")
-onready var player = get_node("../../../Player")
+onready var player
 
 export var num_obstacles: int = 20
 
 func _ready():
+	
+	player = GameState.player
+	
 	print("spawn obstacles")
 	randomize()
 		

@@ -6,6 +6,6 @@ func _ready():
 	description = "Allows you to escape your fate once more"
 
 
-func _apply():
-	PlayerStats.retries += 1
+func _apply() -> void:
+	GameState.retries += 1
 

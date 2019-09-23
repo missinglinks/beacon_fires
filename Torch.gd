@@ -10,16 +10,16 @@ signal torch_picked_up(active_time)
 signal time_changed(time_left)
 signal torch_run_out()
 
-func _ready():
+func _ready() -> void:
+	prompt_offset = Vector2(-50, -40)
 	interaction_prompt = "pick up"
 
 
-func _process(delta):
+func _process(delta: float) -> void:
 	emit_signal("time_changed", timer.time_left)
 
 
-func action():
-	print("torch action")
+func action() -> void:
 	is_active = true
 	timer.wait_time = active_time
 	timer.start()
@@ -30,12 +30,9 @@ func action():
 	visible = false
 
 
-func _on_Timer_timeout():
+func _on_Timer_timeout() -> void:
 	is_active = false
-	
 	GameState.level_failed()
-	
-	print("torch time out")
 
-func _on_BeaconFire_beacon_lit():
+func _on_BeaconFire_beacon_lit() -> void:
 	timer.paused =true

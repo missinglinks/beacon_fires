@@ -28,8 +28,6 @@ stretch_mode = 2
 [node name="Player" parent="YSort" instance=ExtResource( 3 )]
 editor/display_folded = true
 position = Vector2( 0.760559, 104.826 )
-MAX_SPEED = 250.0
-ACCELERATION = 2000.0
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true

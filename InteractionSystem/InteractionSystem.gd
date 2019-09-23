@@ -9,17 +9,15 @@ The interaction system consists of 4 parts:
 """
 
 
-
-func _ready():
+func _ready() -> void:
 	var player = GameState.player
 	if player:
 		var interactor = player.get_node("Interactor")
-		var interaction_prompt = $InteractionPromptNode/InteractionPrompt
+		var interaction_prompt = $InteractionPromptNode
 		interaction_prompt.visible = false
 		
 		var interactibles = get_tree().get_nodes_in_group("Interactible")
 		for node in interactibles:
-			print(node.name)
 			var args = [ node ]
 			node.connect("body_entered", interactor, "_on_Interactable_entered", args)
 			node.connect("body_entered", interaction_prompt, "_on_Interactable_entered", args)

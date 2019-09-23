@@ -8,7 +8,7 @@ func update(delta, host):
 		GameState.retries -= 1
 		$RetryTimer.stop()
 		GameState.reset_level()
-		return GameState.states.Action
+		return GameState.states.Init
 
 func _on_RetryTimer_timeout():
 	GameState.game_over()

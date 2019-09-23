@@ -4,8 +4,8 @@ extends KinematicBody2D
 onready var anim: = $Sprite/AnimationPlayer
 onready var state_machine = $States
 
-export var MAX_SPEED: float = 400
-export var ACCELERATION: float  = 1000
+export var player_speed: float = 400
+export var acceleration: float  = 1000
 
 var motion: Vector2 = Vector2.ZERO
 var direction: String = "up"
@@ -47,15 +47,16 @@ func get_input_axis():
 
 	return axis.normalized()
 
+
 """
 Moves player by applying friction and acceleration
 """
 func move_player(axis, delta):
 	#var axis = get_input_axis()
 	if axis == Vector2.ZERO:
-		apply_friction(ACCELERATION * delta)
+		apply_friction(acceleration * delta)
 	else:
-		apply_movement(axis * ACCELERATION * delta)
+		apply_movement(axis * acceleration * delta)
 	
 	motion = move_and_slide(motion)
 
@@ -69,13 +70,15 @@ func apply_friction(amount):
 	
 func apply_movement(acceleration):
 	motion += acceleration
-	motion = motion.clamped(MAX_SPEED)
+	motion = motion.clamped(player_speed)
+
 
 """
 Emit signal when player state changes
 """
 func _on_States_state_machine_transition(new_state):
 	emit_signal("state_changed", new_state)
+
 
 """
 Force state change to 'Stumbling', when player hits an 'Obstacle'

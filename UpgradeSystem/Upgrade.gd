@@ -16,6 +16,8 @@ func _apply() -> void:
 	pass
 
 func apply() -> void:
+	print("before apply")
 	Upgrades.add_upgrade(self)
 	GameState.upgrade_completed()
 	_apply()
+	print("after apply")
