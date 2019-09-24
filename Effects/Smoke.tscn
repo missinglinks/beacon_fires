@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://sprites/particles/smoke_particle.png" type="Texture" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.00446429, 0.410714, 1 )
+colors = PoolColorArray( 0.363281, 0.363281, 0.363281, 1, 0.682353, 0.682353, 0.682353, 0.141176, 0.839216, 0.839216, 0.839216, 0.0509804 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 179.52 ), 0.0, 0.0, 0, 0, Vector2( 1, 14.08 ), 159.133, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="Curve" id=9]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0.432893, 10.56 ), 0.0, 0.0, 0, 0, Vector2( 0.916874, 200 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0.286479, 0.6364 ), 0.0, 0.0, 0, 0, Vector2( 0.815197, 0.9796 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( -30, -98, 0 )
+angular_velocity = 175.88
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel_curve = SubResource( 5 )
+radial_accel = 9.15
+radial_accel_random = 0.55
+radial_accel_curve = SubResource( 10 )
+tangential_accel_random = 0.13
+damping = 6.87
+scale = 2.0
+scale_random = 0.16
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 3 )
+
+[node name="Smoke" type="Particles2D"]
+material = SubResource( 1 )
+position = Vector2( 189.174, 10.4192 )
+z_index = 5
+emitting = false
+amount = 150
+lifetime = 2.0
+speed_scale = 0.5
+randomness = 0.33
+process_material = SubResource( 8 )
+texture = ExtResource( 1 )

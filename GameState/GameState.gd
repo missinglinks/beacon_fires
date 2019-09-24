@@ -94,6 +94,8 @@ Sets all game progression variables to their initial
 value
 """
 func restart_game() -> void:
+	Upgrades.reset()
+	PlayerStats.reset()
 	shrines_activated = 0
 	shrine_active = false
 	beacons_lit = 0

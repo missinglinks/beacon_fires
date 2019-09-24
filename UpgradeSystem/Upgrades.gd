@@ -10,6 +10,7 @@ func _ready() -> void:
 
 func reset() -> void:
 	upgrades = self.get_children()
+	current_upgrades = []
 
 func get_random_upgrade() -> Upgrade:
 	var i = randi() % upgrades.size()

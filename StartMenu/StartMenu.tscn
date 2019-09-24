@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://StartMenu/StartMenu.gd" type="Script" id=1]
 [ext_resource path="res://StartMenu/Sprites/title_screen_s.png" type="Texture" id=2]
-[ext_resource path="res://StartMenu/Sprites/title_screen_m.png" type="Texture" id=3]
-[ext_resource path="res://Effects/FireParticles.tscn" type="PackedScene" id=4]
-[ext_resource path="res://StartMenu/Sprites/title_screen_c1.png" type="Texture" id=5]
-[ext_resource path="res://UI/Elements/MenuButton.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://StartMenu/Sprites/title_screen_m2.png" type="Texture" id=3]
+[ext_resource path="res://StartMenu/Sprites/title_screen_m.png" type="Texture" id=4]
+[ext_resource path="res://Effects/Smoke.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Effects/FireParticles.tscn" type="PackedScene" id=6]
+[ext_resource path="res://StartMenu/Sprites/title_screen_c1.png" type="Texture" id=7]
+[ext_resource path="res://UI/Elements/MenuButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -22,7 +24,7 @@ scale_random = 1.0
 [sub_resource type="DynamicFont" id=2]
 size = 45
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 7 )
+font_data = ExtResource( 9 )
 
 [node name="StartMenu" type="Node2D"]
 script = ExtResource( 1 )
@@ -32,18 +34,39 @@ position = Vector2( 480, 270 )
 z_index = -3
 texture = ExtResource( 2 )
 
+[node name="Mountains2" type="Sprite" parent="."]
+position = Vector2( 480, 300 )
+z_index = -3
+texture = ExtResource( 3 )
+
 [node name="Mountains" type="Sprite" parent="."]
 position = Vector2( 480, 300 )
 z_index = -2
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
-[node name="FireParticles" parent="." instance=ExtResource( 4 )]
-position = Vector2( 783.854, 280 )
+[node name="Smoke1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 523.055, 290.181 )
+scale = Vector2( 0.3, 0.4 )
+z_index = -2
+
+[node name="FireParticles1" parent="." instance=ExtResource( 6 )]
+position = Vector2( 522.792, 293.35 )
 scale = Vector2( 0.6, 0.6 )
 emitting = false
 
+[node name="Smoke2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 695.384, 244.986 )
+scale = Vector2( 0.1, 0.2 )
+z_index = -3
+
+[node name="FireParticles2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 694.939, 245.708 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -3
+emitting = false
+
 [node name="Clouds2" type="Particles2D" parent="."]
-position = Vector2( 1470, 310 )
+position = Vector2( 1472.58, 329.115 )
 scale = Vector2( 0.6, 0.6 )
 z_index = -3
 amount = 60
@@ -53,7 +76,7 @@ speed_scale = 0.02
 randomness = 0.5
 visibility_rect = Rect2( -1500, -100, 2000, 200 )
 process_material = SubResource( 1 )
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 
 [node name="Clouds1" type="Particles2D" parent="."]
 position = Vector2( 1470, 460 )
@@ -64,7 +87,7 @@ speed_scale = 0.05
 randomness = 0.5
 visibility_rect = Rect2( -1000, -100, 2000, 200 )
 process_material = SubResource( 1 )
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 
 [node name="Menu" type="Control" parent="."]
 margin_left = 20.6974
@@ -72,7 +95,7 @@ margin_top = 71.4395
 margin_right = 60.6974
 margin_bottom = 111.44
 
-[node name="NewGame" parent="Menu" instance=ExtResource( 6 )]
+[node name="NewGame" parent="Menu" instance=ExtResource( 8 )]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -83,7 +106,7 @@ margin_right = 864.303
 margin_bottom = 24.5605
 text = "New game"
 
-[node name="Exit" parent="Menu" instance=ExtResource( 6 )]
+[node name="Exit" parent="Menu" instance=ExtResource( 8 )]
 margin_left = 679.303
 margin_top = 58.5605
 margin_right = 703.303
@@ -102,11 +125,5 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 text = "Beacon Fire"
-
-[node name="FireTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-autostart = true
 [connection signal="pressed" from="Menu/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="Menu/Exit" to="." method="_on_Exit_pressed"]
-[connection signal="timeout" from="FireTimer" to="." method="_on_FireTimer_timeout"]
