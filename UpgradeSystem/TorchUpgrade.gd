@@ -6,4 +6,4 @@ func _ready():
 	description = "Torches last 20 % longer"
 
 func _apply():
-	PlayerStats.torch_time += 1.2
+	PlayerStats.torch_time *= 1.2

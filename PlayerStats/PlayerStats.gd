@@ -9,10 +9,10 @@ var hp: int
 var base_retries: int = 3
 var retries: int
 
-var base_torch_time: float = 10
+var base_torch_time: float = 13
 var torch_time: float
 
-var base_cat_spawning_prob: float = 0.2
+var base_cat_spawning_prob: float = 0.3
 var cat_spawning_prob: float
 
 var immunities = []

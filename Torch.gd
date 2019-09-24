@@ -21,9 +21,9 @@ func _process(delta: float) -> void:
 
 func action() -> void:
 	is_active = true
-	timer.wait_time = active_time
+	timer.wait_time = PlayerStats.base_torch_time
 	timer.start()
-	emit_signal("torch_picked_up", active_time)
+	emit_signal("torch_picked_up", PlayerStats.base_torch_time)
 	
 	#disable collision shape and hide object
 	$CollisionShape2D.disabled=true

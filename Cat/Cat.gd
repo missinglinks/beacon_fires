@@ -9,7 +9,7 @@ func _ready():
 func action():
 	var h = heart.instance()
 	add_child(h)
-	h.position = position - Vector2(10,20)
+	h.global_position = global_position - Vector2(10,20)
 	print("congratulations, you are petting the cat")
 	$CollisionShape2D.disabled = true
 	$InteractionCooldown.start()

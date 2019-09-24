@@ -4,10 +4,10 @@
 [ext_resource path="res://InteractionSystem/InteractionSystem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://InteractionSystem/Interactor.gd" type="Script" id=4]
-[ext_resource path="res://UI/Textbox/TextBox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Shrine/Shrine.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Cat/Cat.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Enemies/PulseEnemy/PulseEnemyPath.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Shrine/Shrine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Cat/Cat.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/PulseEnemy/PulseEnemyPath.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Player/PlayerMessages.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
 
@@ -38,19 +38,22 @@ current = true
 [node name="Interactor" type="Node" parent="YSort/Player"]
 script = ExtResource( 4 )
 
-[node name="TextBox" parent="YSort/Player" instance=ExtResource( 5 )]
-margin_left = -76.9976
-margin_top = -53.4231
-margin_right = 118.002
-margin_bottom = -32.4231
-
-[node name="Shrine" parent="YSort" instance=ExtResource( 6 )]
+[node name="Shrine" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( -220.495, 26.5099 )
 
 [node name="Cat" parent="YSort" groups=[
 "Interactible",
-] instance=ExtResource( 7 )]
+] instance=ExtResource( 6 )]
 
-[node name="PulseEnemyPath" parent="." instance=ExtResource( 8 )]
+[node name="PulseEnemyPath" parent="." instance=ExtResource( 7 )]
 position = Vector2( -159.643, 122.176 )
 time = 3.0
+
+[node name="PlayerMessages" parent="." instance=ExtResource( 8 )]
+messages = "I can do this!
+Oh god oh man oh god!
+SHIT!
+FUCK!
+Just concentrate!
+shitshithsitshit"
+host_path = NodePath("../YSort/Player")

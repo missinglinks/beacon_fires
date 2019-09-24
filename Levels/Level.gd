@@ -2,6 +2,7 @@ extends Node2D
 
 onready var beacon_fire = get_node("../BeaconFire")
 onready var shrine = get_node("../YSort/Shrine")
+onready var cat = get_node("../YSort/Cat")
 onready var blocks = $Blocks
 
 #level configuration
@@ -9,7 +10,7 @@ export var block_h: int = 500
 
 #level elements
 var top1 = preload("res://Levels/Grass/Blocks/Top1.tscn")
-var start1 = preload("res://Levels/Block.tscn")
+var start1 = preload("res://Levels/Grass/Blocks/Btm1.tscn")
 var block = preload("res://Levels/Block.tscn")
 
 
@@ -22,7 +23,7 @@ func generate_level() -> void:
 		
 	var s = start1.instance()
 	
-	s.position = Vector2(-250, y_start)
+	s.position = Vector2(0, 250)
 	s.z_index = -10
 	blocks.add_child(s)
 	y_start -= block_h
@@ -48,4 +49,10 @@ func generate_level() -> void:
 	if randi() % 2 == 0:
 		x_pos *= -1
 	shrine.position = Vector2(x_pos, y_pos)
+	
+	#set cat
+	if randf() <= PlayerStats.cat_spawning_prob:
+		cat.position = Vector2(rand_range(-250, 250), rand_range(100, 450))
+	else:
+		cat.queue_free()
 	

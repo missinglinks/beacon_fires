@@ -40,6 +40,7 @@ tracks/2/keys = {
 [node name="HeartEmote" type="Sprite"]
 modulate = Color( 1, 1, 1, -0.977087 )
 scale = Vector2( 0.6, 0.623584 )
+z_index = 50
 texture = ExtResource( 1 )
 offset = Vector2( 2.49513, -25.2826 )
 script = ExtResource( 2 )
