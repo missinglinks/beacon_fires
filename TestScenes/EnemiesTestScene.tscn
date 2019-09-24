@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://sprites/ground/ground1.png" type="Texture" id=1]
 [ext_resource path="res://InteractionSystem/InteractionSystem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://InteractionSystem/Interactor.gd" type="Script" id=4]
-[ext_resource path="res://Shrine/Shrine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/Textbox/TextBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Shrine/Shrine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Cat/Cat.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemies/PulseEnemy/PulseEnemyPath.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Node2D" type="Node2D" parent="."]
-editor/display_folded = true
 z_index = -50
 
 [node name="TextureRect" type="TextureRect" parent="Node2D"]
@@ -26,8 +28,9 @@ stretch_mode = 2
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 0.760559, 104.826 )
+player_speed = 250.0
+acceleration = 1800.0
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
@@ -35,5 +38,19 @@ current = true
 [node name="Interactor" type="Node" parent="YSort/Player"]
 script = ExtResource( 4 )
 
-[node name="Shrine" parent="YSort" instance=ExtResource( 5 )]
+[node name="TextBox" parent="YSort/Player" instance=ExtResource( 5 )]
+margin_left = -76.9976
+margin_top = -53.4231
+margin_right = 118.002
+margin_bottom = -32.4231
+
+[node name="Shrine" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( -220.495, 26.5099 )
+
+[node name="Cat" parent="YSort" groups=[
+"Interactible",
+] instance=ExtResource( 7 )]
+
+[node name="PulseEnemyPath" parent="." instance=ExtResource( 8 )]
+position = Vector2( -159.643, 122.176 )
+time = 3.0

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Cat/Cat.gd" type="Script" id=1]
+[ext_resource path="res://Cat/Sprites/cat.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24.2623, 18.2652 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 3.17101 )
+
+[node name="Cat" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -3.77354, -2.26412 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -3.77353, 4.15089 )
+shape = SubResource( 2 )
+
+[node name="InteractionCooldown" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="InteractionCooldown" to="." method="_on_InteractionCooldown_timeout"]

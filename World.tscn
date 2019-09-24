@@ -164,8 +164,8 @@ script = ExtResource( 17 )
 [node name="LevelSetupFactory" parent="." instance=ExtResource( 19 )]
 
 [node name="InteractionSystem" parent="." instance=ExtResource( 20 )]
-[connection signal="state_changed" from="YSort/Player" to="InterfaceLayer/Interface" method="_on_Player_state_changed"]
 [connection signal="state_changed" from="YSort/Player" to="YSort/Player/PlayerCamera" method="_on_Player_state_changed"]
+[connection signal="state_changed" from="YSort/Player" to="InterfaceLayer/Interface" method="_on_Player_state_changed"]
 [connection signal="time_changed" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_time_changed"]
 [connection signal="torch_picked_up" from="Torch" to="BeaconFire" method="_on_Torch_torch_picked_up"]
 [connection signal="torch_picked_up" from="Torch" to="InterfaceLayer/Interface" method="_on_Torch_torch_picked_up"]

@@ -106,9 +106,8 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15, 16 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=7]
-radius = 2.68655
-height = 0.438524
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 0.8491, 2.46191 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
@@ -130,7 +129,7 @@ anims/run_right = SubResource( 5 )
 anims/run_up = SubResource( 6 )
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2( 0.596599, 8.35586 )
+position = Vector2( 0.480625, 7.19604 )
 scale = Vector2( 3, 3 )
 shape = SubResource( 7 )
 

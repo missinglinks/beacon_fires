@@ -24,11 +24,12 @@ func _input(event) -> void:
 
 func _on_Interactable_entered(body, interaction_node: Interactible) -> void:
 	if body.is_in_group("Player"):
-		print("entered "+interaction_node.name)
 		can_interact = true
 		interaction_target = interaction_node
 	
 	
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _on_Interactable_exited(body, interaction_node) -> void:
 	if interaction_target:
 		if interaction_target.action_pressed:
