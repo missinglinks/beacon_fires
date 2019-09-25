@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -55.2453, 101.287, 0, 0, 0, 0, 372.37, 101.287 )
+"points": PoolVector2Array( 0, 0, 0, 0, -55.2453, 101.287, 0, 0, 0, 0, 433.725, 100.714 )
 }
 
 [node name="PulseEnemyPath" type="Path2D"]

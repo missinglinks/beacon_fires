@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 """
 The interaction system consists of 4 parts:

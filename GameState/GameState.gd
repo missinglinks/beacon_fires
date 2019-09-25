@@ -41,6 +41,11 @@ func _ready() -> void:
 	level_width = 500
 
 
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("ui_end"):
+		get_tree().quit()
+
+
 """
 Returns the player node if its available in the current node.
 Returns null, if no player is available

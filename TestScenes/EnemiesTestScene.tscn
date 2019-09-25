@@ -24,12 +24,23 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 2
 
+[node name="TextureRect2" type="TextureRect" parent="Node2D"]
+margin_left = -477.0
+margin_top = -508.0
+margin_right = 523.0
+margin_bottom = 492.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+
 [node name="InteractionSystem" parent="." instance=ExtResource( 2 )]
+z_index = 0
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 0.760559, 104.826 )
+z_index = 1
 player_speed = 250.0
 acceleration = 1800.0
 

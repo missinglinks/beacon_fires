@@ -44,7 +44,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Beacon Fires"
+config/name="Beacon Fire"
 run/main_scene="res://StartMenu/StartMenu.tscn"
 
 [autoload]
